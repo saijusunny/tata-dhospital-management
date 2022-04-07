@@ -1,0 +1,15 @@
+.container{
+    background-image:url('static/image/wp2679108.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#aj{
+    color: blue;
+}
+nav{
+    background-color: black;
+}
+.navbar-nav {
+    margin-left: auto;
+}

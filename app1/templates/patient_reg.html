@@ -1,0 +1,29 @@
+{% extends 'base staff.html' %}
+
+{% block content %}
+
+
+<div class="row" style="height: 500px;">
+    <div class="col-sm-6"  style="background-color: #343a40; margin:3% auto; text-align: center;">
+        <form action="{% url 'patient_reg'%}" class="form" method="POST">
+            <h1 style="color: white; margin-top: 5%; margin-bottom: 3%;">Add Student</h1>
+            {% csrf_token%}
+            <input type="text" class="form-control" name="name" placeholder="Name"><br>
+            <input type="text" class="form-control" name="address" placeholder="Address"><br>
+            <input type="number" class="form-control" name="mobile" placeholder="Mobile Number"><br>
+            <input type="email" class="form-control" name="email" placeholder="email"><br>
+            <input type="number" class="form-control" name="age" placeholder="age"><br>
+            <select name="sct" style="margin-top: 1%;"  class="form-control">
+                {% for section in pt %}
+                <option value="{{section.id}}">{{ section.Section_name}}</option>
+                {%endfor%}
+            </select><br>
+            <input type="submit" class="btn btn-light" style="margin-top: 3%;" value=" Submit">
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12" style="text-align:center">
+    </div>
+  </div>
+{% endblock %}

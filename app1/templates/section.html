@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+
+<div class="row" >
+    <div class="col-sm-6" style="background-color: #343a40; margin:3% auto; text-align:center">
+        <form action="{% url 'add_section'%}" class="form" method="POST">
+            <h1 style="color: white;">Add Course</h1>
+            {% csrf_token %}
+            <input type="text" class="form-control" name="section" placeholder="section_name"><br>
+            <input type="number" class="form-control" name="floor" placeholder="floor Number"><br>
+         
+            <input type="submit" class="btn btn-light" value=" Submit">
+        </form>
+    </div>
+</div>
+{% endblock %}

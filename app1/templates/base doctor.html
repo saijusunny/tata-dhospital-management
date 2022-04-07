@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css\index.css'%}">
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-md   navbar-dark">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#"><span style="color: orangered;">TATA</span> &nbsp; <span style="color: yellow;">HOSPITAL</span></a>
+      
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link {% if request.resolver_match.url_name == 'index'%} active {% endif %}" active href="{% url 'index'%}">details</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'index'%} active {% endif %}" href="{% url 'index'%}">Log out</a>  
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'patient_view_doctor'%} active {% endif %}" href="{% url 'patient_view_doctor'%}">Patients</a>
+              </li>
+           
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'staff_login'%} active {% endif %}" href="{% url 'staff_login'%}">Dashboard</a>
+              </li>
+          </ul>
+        </div>
+      
+      </nav>
+      {% block content %}
+
+      {% endblock %}
+
+</body>
+</html>

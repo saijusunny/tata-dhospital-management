@@ -1,0 +1,46 @@
+{% extends 'base doctor.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row" >
+        <div class="col-sm-12"  style="background-color: #343a40; margin:1% auto">
+            <table class="table table-dark" style="text-align: center;">
+                <h1 style="color: white; margin-top: 1%; margin-bottom: 3%; text-align: center;">Student Details</h1>
+                <thead>
+                    <tr>
+                        <th  style="color: yellow;">ID</th>
+                        <th style="color: yellow;">NAME</th>
+                        <th style="color: yellow;">ADDRESS</th>
+                        <th style="color: yellow;">MOBILE NUMBER</th>
+                        <th style="color: yellow;">EMAIL</th>
+                        <th style="color: yellow;">AGE</th>
+                        <th style="color: yellow;">SECTION</th>
+                        <th style="color: yellow;">DESICION</th>
+
+                        <!-- <th style="color: yellow;">ACTION</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in result %}
+                    <tr>
+                        <td>{{i.id}}</td>
+                        <td>{{i.name}}</td>
+                        <td>{{i.address}}</td>
+                        <td>{{i.mobile}}</td>
+                        <td>{{i.email}}</td>
+                        <td>{{i.age}}</td>
+                        <td>{{i.section.Section_name}}</td>
+                        <td>
+                            <input type="submit" class="btn btn-light" value="Approve"><br><br>
+                            <input type="submit" class="btn btn-light" value="Declain">
+                        </td>
+                       
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

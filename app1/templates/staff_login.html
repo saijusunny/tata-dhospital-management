@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="row" >
+      <div class="col-sm-4" style="margin: 8% auto; background-color:black; width: 100%; height: 300px;" >
+        
+        <form action="{% url 'login_stf'%}" method="POST" class="form" style="margin:70px auto; text-align: center;">
+          <h2 style="color: yellow;margin-bottom: 5%;">Login</h2>
+            {% csrf_token %}
+          <!-- <label>Username</label> -->
+          <input type="text" name="username" style="margin-top: 2%;" class="form-control" placeholder="user name">
+          <!-- <label>Password</label> -->
+          <input type="password" name="password" style="margin-top: 2%;" placeholder="Password" class="form-control">
+          <input type="submit" class="btn btn-light" value="Login" style="margin-top:2%">
+          <h6><span style="color:orangered;"> If You Are not In our family </span> <a href="{%url 'staffreg'%}"><span style="color:yellow; text-decoration: none;"> Join Now </span></a></h6>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
