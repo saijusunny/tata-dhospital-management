@@ -21,7 +21,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for i in result %}
+                    {% for i in dt %}
                     <tr>
                         <td>{{i.id}}</td>
                         <td>{{i.name}}</td>
@@ -31,7 +31,7 @@
                         <td>{{i.age}}</td>
                         <td>{{i.section.Section_name}}</td>
                         <td>
-                           <a href="{% url 'aprove' i.id%}"> <input type="submit" class="btn btn-light" value="Approve"><br><br></a>
+                            <input type="submit" class="btn btn-light" value="Approve"><br><br>
                             <input type="submit" class="btn btn-light" value="Declain">
                         </td>
                        

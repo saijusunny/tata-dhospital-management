@@ -1,0 +1,33 @@
+{% extends 'base staff.html' %}
+
+{% block content %}
+
+
+<div class="row" style="height: 500px;">
+    <div class="col-sm-6"  style="background-color: #343a40; margin:3% auto; text-align: center;">
+        <form action="{% url 'send_aprove'%}" class="form" method="POST">
+            <h1 style="color: white; margin-top: 5%; margin-bottom: 3%;">Add Student</h1>
+            {% csrf_token%}
+            <input type="text" class="form-control" name="name" value="{{ltt.name}}" placeholder="Name"><br>
+            <input type="text" class="form-control" name="address"value="{{ltt.address}}" placeholder="Address"><br>
+            <input type="number" class="form-control" name="mobile"value="{{ltt.mobile}}" placeholder="Mobile Number"><br>
+            <input type="email" class="form-control" name="email"value="{{ltt.email}}" placeholder="email"><br>
+            <input type="number" class="form-control" name="age"value="{{ltt.age}}" placeholder="age"><br>
+            <input type="number" class="form-control" name="sct"value="{{ltt.section.Section_name}}" placeholder="age"><br>
+            <input type="time" class="form-control" name="timeaf" placeholder="Starting Time"><br>
+            <input type="time" class="form-control" name="timebf" placeholder="Ending Time"><br>
+            <input type="date" class="form-control" name="date" placeholder="date"><br>
+            <input type="Text" class="form-control" name="dctr" placeholder="Doctor Name"><br>
+
+
+            <input type="submit" class="btn btn-light" style="margin-top: 3%;" onclick="alert('Email Has Been Send To His Mail')" value=" Submit">
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12" style="text-align:center">
+    </div>
+  </div>
+{% endblock %}
+
+

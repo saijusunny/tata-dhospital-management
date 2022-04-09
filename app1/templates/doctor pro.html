@@ -1,0 +1,66 @@
+{% extends 'base doctor.html' %}
+
+{% block content %}
+
+
+
+<div class="row">
+    <div class="col-sm-12">
+    {% for message in messages %}
+        <h5>
+            <div class="alert alert-danger">
+            {{ message}}
+            </div>
+        </h5>
+    {%endfor%}
+
+    </div>
+</div>
+
+
+
+
+{% load static %}
+
+
+
+<div class="container-fluid" style="background-color: #838f9c;">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 style="text-align: center; color: white;">Profile</h1>
+    </div>
+  </div>
+    <div class="row">
+        {% for i in ps %}
+        <div class="col-sm-4">
+            {% if i.image == 'static/image/icon.png' %}
+            <img src="{% static 'image/icon.png' %}" class="w-75">
+         
+          {% else %}
+          
+            <img src="{{i.items.url}}" class="w-75" style="border-radius: 50%;">
+         
+         {% endif %}
+        </div>
+        <div class="col-sm-8">
+            <form class="form">
+                <label style="color: yellow;">Name:</label><br>
+                <input type="text" class="form-control"  value="{{i.name}}"><br>
+                <label style="color: yellow;"> User Name:</label><br>
+                <input type="text" class="form-control" value="{{i.username}}"><br>
+                <label style="color: yellow;">Password:</label><br>
+                <input type="password" class="form-control" value="{{i.password}}"><br>
+                <label style="color: yellow;">Email:</label><br>
+                <input type="text" class="form-control" value=" {{i.mail}}"><br>
+                <label style="color: yellow;">Mobile:</label><br>
+                <input type="text" class="form-control" value=" {{i.number}}"><br>
+                <label style="color: yellow;">Section:</label><br>
+                <input type="text" class="form-control" value=" {{i.section.Section_name}}"><br>
+                
+              </form>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="container-fluid" style="background-color: #838f9c;">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 style="text-align: center; color: white;">Profile</h1>
+    </div>
+  </div>
+  <div class="row" style="padding-bottom: 10%;">
+    {%if result.name == none%}
+    <div style="margin: 0 auto; text-align: center;" >
+      <h1>Your Profile Is Empty</h1>
+    <a href="{% url 'complete_pro'%}" ><input type="submit" Value="Create one" class="btn btn-danger" ></a>
+    </div>      
+    {% else %}
+    <div class="col-sm-4" style="background-color: #343a40;padding-top:5%;">
+      <div >
+      {% if result.image == 'static/image/icon.png' %}
+        <img src="{% static 'image/icon.png' %}" class="w-75">
+     
+      {% else %}
+      
+        <img src="{{ result.image.url }}" class="w-75" style="border-radius: 50%;">
+     
+     {% endif %}
+    </div>
+    </div>
+    <div class="col-sm-8" style="background-color: #343a40;">
+      <form class="form">
+        <label style="color: yellow;">Name:</label><br>
+        <input type="text" class="form-control"  value="{{result.name}}"><br>
+        <label style="color: yellow;"> User Name:</label><br>
+        <input type="text" class="form-control" value="{{result.username}}"><br>
+        <label style="color: yellow;">Password:</label><br>
+        <input type="password" class="form-control" value="{{result.password}}"><br>
+        <label style="color: yellow;">Email:</label><br>
+        <input type="text" class="form-control" value=" {{result.email}}"><br>
+        
+      </form>
+
+      <a href="{% url 'edit_admin_pro' result.id%}" style="margin-left: 40%;"><input type="submit" Value="Edit" class="btn btn-danger" ></a>      
+
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+
+    
+  
+  
+
+      
+{% endblock %}

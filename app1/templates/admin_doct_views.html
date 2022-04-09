@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+<div class="containser m-5" >
+    <div class="row" >
+        {% for t in dt %}
+        <div class="col-md-3">
+            <div class="card m-4" style="width: 18rem;height: auto;text-align: center;">
+                <img class="card-img-top" style=" height: 300px; width: 18rem;" src="{{t.items.url}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{t.name}}</h5>
+                    <h5 class="card-title">Section:&nbsp;{{t.section.Section_name}}</h5>
+                    <h5 class="card-title">Section:&nbsp;{{t.number}}</h5>
+
+                </div>
+            </div>
+        </div>
+    
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

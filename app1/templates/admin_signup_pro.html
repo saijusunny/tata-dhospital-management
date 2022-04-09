@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row" style="text-align: center;">
+        <div class="col-sm-8">
+
+            <h1>Signup Section</h1>
+
+
+            <form action="{% url 'signup_details'%}" class="form" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}  
+
+                <input type="text" placeholder="Name" name="name" class="form-control"><br>
+                <input type="text" placeholder="Username" name="username" class="form-control"><br>
+                <input type="password" placeholder="Password" name="password" class="form-control"><br>
+                <input type="password" placeholder="Re-enter Password" name="repassword" class="form-control"><br>
+                <input type="file" placeholder="Image" name="file" class="form-control" accept ='image/'><br>
+                <input type="email" placeholder="Email" name="email" class="form-control"><br>
+                <input type="submit" value="Signup" class="btn btn-light"><br>
+
+            </form>
+            <br>
+            
+
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8" style="margin: 10% auto; text-align: center; background-color: #343a40; margin-bottom: 5%;">
+
+                <h1 style="color: yellow; margin-top: 2%;" >Signup Section</h1>
+
+
+                <form action="/edit_details/{{products.pk}}" class="form" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}  
+
+                    <input type="text"  name="name" value="{{products.name}}" class="form-control"><br>
+                    <input type="text"  name="username" value="{{products.username}}" class="form-control"><br>
+                    <input type="password"  name="password" value="{{products.password}}" class="form-control"><br>
+                    <input type="password"  name="repassword" value="{{products.repassword}}" class="form-control"><br>
+                    <label style="color: white;">Image:</label>
+                    {% if products.image == 'static/image/icon.png'%}
+                    
+                    <img src="{% static 'static/image/icon.png' %}" class="w-25" >
+                    
+                    {% else %}
+                    
+                    <img src="{{ products.image.url }}" class="w-25" >
+                    
+                    <br>
+                    {%endif%}
+                    <input type="file" placeholder="Image" name="file" class="form-control" accept ='image/'><br>
+
+                    <input type="email"  name="email" value="{{products.email}}" class="form-control"><br>
+                    <input type="submit" value="Save" class="btn btn-light">
+
+                </form>
+
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

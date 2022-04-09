@@ -36,6 +36,20 @@
               <li class="nav-item">
                 <a class="nav-link {% if request.resolver_match.url_name == 'sections'%} active {% endif %}" href="{% url 'sections'%}">Add Section</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'admin_doct_view'%} active {% endif %}" href="{% url 'admin_doct_view'%}">Doctors</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'admin_staff_view'%} active {% endif %}" href="{% url 'admin_staff_view'%}">Staffs</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'admin_patient_view'%} active {% endif %}" href="{% url 'admin_patient_view'%}">Patients</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'profile_admin'%} active {% endif %}" href="{% url 'profile_admin'%}">Profile</a>
+              </li>
+              
+              
             </ul>
           </div>
         {% else %}
@@ -55,6 +69,7 @@
               <li class="nav-item">
                 <a class="nav-link {% if request.resolver_match.url_name == 'doctor_login'%} active {% endif %}" href="{% url 'doctor_login'%}">Doctor Login</a>
               </li>
+
 
               
           </ul>

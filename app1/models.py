@@ -1,6 +1,6 @@
 
 from django.db import models
-from django.forms import CharField
+from django.contrib.auth.models import User
 
 class section(models.Model):
     Section_name = models.CharField(max_length=225)
@@ -35,3 +35,12 @@ class doctor(models.Model):
     mail = models.EmailField(max_length=255)
     items = models.ImageField(upload_to='propic/items',null=True,blank=True)
     
+# Create your models here.
+class userlogin(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    name=models.CharField(max_length=255)
+    username=models.CharField(max_length=255)
+    password=models.IntegerField()
+    repassword=models.IntegerField()
+    image=models.ImageField(upload_to="image/", null=True)
+    email=models.CharField(max_length=255)
