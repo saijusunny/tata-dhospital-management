@@ -25,7 +25,7 @@
 
       <form action="{% url 'login_doctor'%}" method="POST" class="form" enctype="multipart/form-data">
         {% csrf_token %}
-        <h1 style="color: yellow;">Sign Up</h1>
+        <h1 style="color: yellow;"> Doctor Sign Up</h1>
         <!-- <label>First Name</label> -->
         <input type="text" name="name"  placeholder="Name" class="form-control">
         
@@ -42,10 +42,10 @@
           {% for section in ct %}
           <option value="{{section.id}}">{{ section.Section_name}}</option>
           {%endfor%}
-      </select><br>
+      </select>
         <input type="number" name="phnumber" placeholder="phnumber" style="margin-top: 1%;" class="form-control">
 
-        <input type="submit" class="btn btn-light" value="Sign Up" style="margin: 1% auto;" >
+        <input type="submit" class="btn btn-success" value="Sign Up" style="margin: 1% auto;" >
 
       </form>
     </div>

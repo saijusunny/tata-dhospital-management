@@ -1,10 +1,165 @@
 {% extends 'base.html' %}
-
+{%load static%}
 {% block content %}
-    <div class='row' style= " margin-top: 1%; background-image:url('static/image/wp2679108.jpg');background-position: center;background-size: cover; background-repeat: no-repeat;">
-        <div class="col-sm-12" style="width: 100%; height: 400px;">
-            <h1 style="text-align: center; padding-top: 15%; color: white;">Welcome World</h1>
-            
+<div class="container-fluid" style="background-color: black;">
+
+
+
+    <div class="row" >
+        <div class="col-sm-12">
+            <img src="{% static 'image\index home image.jpg'%}" width="100%" height="500px" alt="">
         </div>
     </div>
+
+    <div class="row" style="margin-top: 3%;">
+        <div class="col-sm-12">
+            <h1 style="color: yellow; text-align: center;" >AP Varkey Mission Hospital</h1>
+        </div>
+    </div>
+    <div class="row" >
+        <div class="cosm-12" style="color: white; text-align: center; ">
+            <h5>A P Varkey Mission Hospital, is a general hospital owned and operated by CPIM in Arakkunnam, Ernakulam district, Kerala, India. The hospital is named after the former district secretary of CPIM party, late A.P. Varkey. It was established in 2003 and was inaugurated
+                 by the Leader of opposition Kerala state assembly V.S. Achuthananthan. Hospital is located at Arakkunnam about 25 km (16 mi) from Kochi in
+                  a 25-acre (10 ha) sprawling campus. The hospital has four major blocks and the latest one was inaugurated by the Health Minister P
+                   Sankaran on 5 February 2004. The hospital has all the major departments in clinical and surgical areas.</h5>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 3%; background-color: rgb(20, 19, 19);">
+        <div class="col-sm-12">
+            <h1 style="color: yellow; text-align: center;" >Departrments</h1>
+        </div>
+    </div>
+
+    <div class="row" style="height: auto; ">
+        <div class="col-sm-3" style="background-color: rgb(0, 0, 0); width: 600px; ">
+            <div style="background-color: rgb(20, 19, 19); width: 100%; height: 490px; margin-top: 2%;">
+                <div style="text-align: center; padding-top: 5%;">
+                    <img src="{% static 'image\general.jpg'%}" width="100%" alt="" >
+                </div>
+                <div style="padding-top: 3%; text-align: center;">
+                   <h3 style="color: yellow;"> GENERAL MEDICINE</h3>
+                </div>
+                <div style="text-align:center; color: white;">
+                Department headed by Chief Physician with 4 decades of experience in both Government and Private sectors. Regular consultation from 9am to 3pm. Average patient strength is 75 per day.
+                
+                </div>
+                <div style="text-align: center; margin-top: 3%;">
+                    <button class="btn btn-success" style="text-align: center;">More..</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3" style="background-color: rgb(0, 0, 0);">
+            <div style="background-color: rgb(20, 19, 19); width: 100%; height: 490px; margin-top: 2%;">
+
+
+                <div style="text-align: center; padding-top: 5%;">
+                    <img src="{% static 'image\GYNECOLOGY.jpg'%}" width="100%" height="100%" alt="" >
+                </div>
+                <div style="padding-top: 3%; text-align: center;">
+                   <h3 style="color: yellow;"> GYNECOLOGY</h3>
+                </div>
+                <div style="text-align:center; color: white;">
+                    Department is offering round the clock service.  Headed by a specialist in the field. All procedures are being under taken. Laparoscopic surgeries are also being done. Normal delivery is preferred. LSCS is also done.                
+                </div>
+
+                <div style="text-align: center; margin-top: 3%;">
+                    <button class="btn btn-success" style="text-align: center;">More..</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3" style="background-color: rgb(0, 0, 0);">
+            <div style="background-color: rgb(20, 19, 19); width: 100%; height: 490px; margin-top: 2%;">
+
+
+                <div style="text-align: center; padding-top: 5%;">
+                    <img src="{% static 'image\PAEDIATRICS.jpg'%}" width="100%" alt="" >
+                </div>
+                <div style="padding-top: 3%; text-align: center;">
+                   <h3 style="color: yellow;"> PAEDIATRICS</h3>
+                </div>
+                <div style="text-align:center; color: white;">
+                    Pediatrics is another area where specialized services are offered in the hospital. Two full time Pediatricians are available new born care and PICU is also live. Average patient population is around 40 per day.                
+                </div>
+                <div style="text-align: center; margin-top: 3%;">
+                    <button class="btn btn-success" style="text-align: center;">More..</button>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-sm-3" style="background-color: rgb(0, 0, 0);">
+            <div style="background-color: rgb(20, 19, 19); width: 100%; height: 490px; margin-top: 2%;">
+
+
+                <div style=" padding-top: 5%;">
+                    <img src="{% static 'image\CARDIOLOGY.jpg'%}" width="100%" alt="" >
+                </div>
+                <div style="padding-top: 3%; text-align: center;">
+                   <h3 style="color: yellow;"> CARDIOLOGY</h3>
+                </div>
+                <div style="text-align:center; color: white;">
+                    Only visiting Cardiologists, frequency of visit is twice in a week. Consultation is by advance booking. Average patient population is 45 per week. Only Op treatment is offered. But hospital is planning to increase weekly visit to                
+                </div>
+                <div style="text-align: center; margin-top: 3%;">
+                    <button class="btn btn-success" style="text-align: center;">More..</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<!-- ----------------------------------------------footer----------------------------------------------------------- -->
+    <div class="row" style="margin-top:3%; background-color:rgb(20, 19, 19);padding-top: 3% ;padding-bottom: 3%;">
+        <div class="col-sm-4">
+           <a href="#"> <h6 style="text-decoration: none; color: yellow; text-align: center;">About Us</h6></a>
+           <a href="#"><h6 style="text-decoration: none; color: yellow; text-align: center;">Contact Us</h6></a>
+
+           <a href="#"><h6 style="text-decoration: none; color: yellow; text-align: center;">Press Releases</h6></a>
+
+            <a href="#"> <h6 style="text-decoration: none; color: yellow; text-align: center;">Ap Vorkey Cares</h6></a>
+
+            <a href="#"><h6 style="text-decoration: none; color: yellow; text-align: center;">Gift a Smile</h6></a>
+
+            
+        </div>
+
+        <div class="col-sm-4">
+            <a href="#"> <h6 style="text-decoration: none; color: yellow; text-align: center;">Facebook</h6></a>
+            <a href="#"> <h6 style="text-decoration: none; color: yellow; text-align: center;">Twitter</h6></a>
+
+            <a href="#"> <h6 style="text-decoration: none; color: yellow; text-align: center;">Instagram</h6></a>
+
+            <a href="#"> <h6 style="text-decoration: none; color: yellow; text-align: center;">Reddit</h6></a>
+
+            <a href="#"> <h6 style="text-decoration: none; color: yellow; text-align: center;">Quicker</h6></a>
+
+            
+        </div>
+
+        <div class="col-sm-4">
+            <a href="#"><h6 style="text-decoration: none; color: yellow; text-align: center;">Fulfilment by Ap Vorkey</h6></a>
+            <a href="#"><h6 style="text-decoration: none; color: yellow; text-align: center;">COVID-19</h6></a>
+
+            <a href="#"><h6 style="text-decoration: none; color: yellow; text-align: center;">Advertise Your Suggestions</h6></a>
+
+            <a href="#"><h6 style="text-decoration: none; color: yellow; text-align: center;">100% Life Protection</h6></a>
+
+
+            
+        </div>
+
+    </div>
+    <div class="row"  style=" background-color:rgb(20, 19, 19); ">
+        <div class="col-sm-12" style="text-align: center;" >
+            <h3 style="color:green;">Countact Us</h3>
+           
+
+            <h6 style="color: white;">Email:&nbsp; apvmh@gmail.com</h6>
+            <h6 style="color: white;">Email:&nbsp;9856457852, &nbsp;85468752157852</h6>
+            <h6 style="color: white;">Address:&nbsp; Arakkunnam - Piravom Rd, Thottapady, Arakkunnam, Kerala 682314</h6>
+        </div>
+    </div>
+
+</div>
+
 {% endblock %}

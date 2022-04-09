@@ -3,15 +3,48 @@
 {% block content %}
 
 <div class="row" >
-    <div class="col-sm-6" style="background-color: #343a40; margin:3% auto; text-align:center">
+    <div class="col-sm-6" style="background-color: black; margin:3% auto; text-align:center">
         <form action="{% url 'add_section'%}" class="form" method="POST">
             <h1 style="color: white;">Add Course</h1>
             {% csrf_token %}
-            <input type="text" class="form-control" name="section" placeholder="section_name"><br>
-            <input type="number" class="form-control" name="floor" placeholder="floor Number"><br>
+            <input type="text" class="form-control" name="section" placeholder="Section Name"><br>
+            <input type="number" class="form-control" name="floor" placeholder="Room Number"><br>
          
-            <input type="submit" class="btn btn-light" value=" Submit">
+            <input type="submit" class="btn btn-success" style="margin-bottom:3%" value=" Submit">
         </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table" style="text-align: center; background-color: black;">
+            <h1 style="color: white; margin-top: 1%; margin-bottom: 3%; text-align: center;">Sections Details</h1>
+            <thead>
+                <tr>
+                    <th  style="color: yellow;">ID</th>
+                    <th style="color: yellow;">SECTION</th>
+                    <th style="color: yellow;">Floor NUmber</th>
+                    <th style="color: yellow;">Actions</th>
+
+                    <!-- <th style="color: yellow;">ACTION</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in sec %}
+                <tr>
+                    <td style="color:rgb(255, 255, 255);">{{i.id}}</td>
+                    <td style="color:rgb(255, 255, 255);">{{i.Section_name}}</td>
+                    <td style="color:rgb(255, 255, 255);">{{i.room_no}}</td>
+                    <td>
+                        <a href="{% url 'section_edit' i.id%}"><button type="submit" class="btn btn-success btn-sm mx-5 my-3"> Edit </button></a>
+
+                        <a href="{% url 'delete_section' i.id%}"><button type="submit" class="btn btn-danger btn-sm mx-5 my-3" onclick="alert('Delete Section')"> Delete </button></a>
+                    </td>
+                   
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
     </div>
 </div>
 {% endblock %}

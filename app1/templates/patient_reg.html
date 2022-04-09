@@ -4,21 +4,21 @@
 
 
 <div class="row" style="height: 500px;">
-    <div class="col-sm-6"  style="background-color: #343a40; margin:3% auto; text-align: center;">
+    <div class="col-sm-6"  style="background-color: black; margin:3% auto; text-align: center;">
         <form action="{% url 'patient_reg'%}" class="form" method="POST">
-            <h1 style="color: white; margin-top: 5%; margin-bottom: 3%;">Add Student</h1>
+            <h1 style="color: yellow; margin-top: 5%; margin-bottom: 3%;">Add Patient</h1>
             {% csrf_token%}
-            <input type="text" class="form-control" name="name" placeholder="Name"><br>
-            <input type="text" class="form-control" name="address" placeholder="Address"><br>
-            <input type="number" class="form-control" name="mobile" placeholder="Mobile Number"><br>
-            <input type="email" class="form-control" name="email" placeholder="email"><br>
-            <input type="number" class="form-control" name="age" placeholder="age"><br>
-            <select name="sct" style="margin-top: 1%;"  class="form-control">
+            <input type="text" class="form-control" style="color:black; font-weight:bold" name="name" placeholder="Name"><br>
+            <input type="text" class="form-control" style="color:black; font-weight:bold" name="address" placeholder="Address"><br>
+            <input type="number" class="form-control" style="color:black; font-weight:bold"  name="mobile" placeholder="Mobile Number"><br>
+            <input type="email" class="form-control" style="color:black; font-weight:bold" name="email" placeholder="email"><br>
+            <input type="number" class="form-control" style="color:black; font-weight:bold" name="age" placeholder="age"><br>
+            <select name="sct" style="margin-top: 1%;" style="color:black; font-weight:bold"  class="form-control">
                 {% for section in pt %}
-                <option value="{{section.id}}">{{ section.Section_name}}</option>
+                <option style="color:black; font-weight:bold" value="{{section.id}}">{{ section.Section_name}}</option>
                 {%endfor%}
             </select><br>
-            <input type="submit" class="btn btn-light" style="margin-top: 3%;" value=" Submit">
+            <input type="submit" class="btn btn-success" style="margin-top: 3%; " value=" Submit">
         </form>
     </div>
 </div>

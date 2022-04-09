@@ -2,21 +2,16 @@
 {% block content %}
 
 <div class="container">
-    <div class="row" style="background-color: white; margin-top: 1%;">
-        <div class="col-sm-12"  style="background-color: #343a40; color: white;text-align: center;">
-           
-            <!-- <img src="https://images.app.goo.gl/psmgQZsFsk49KKez5" alt="" > -->
-        </div>
-    </div>
+
     <div class="row" style="margin-top:5%;">
-        <div class="col-sm-6" style="background-color: #343a40; color: yellow; height: 300px; text-align: center; padding-top: 13%;" >
+        <div class="col-sm-6" style="background-color: Black; color: yellow; height: 300px; text-align: center; padding-top: 13%;" >
             {% for msg in messages%}
             
-            <h1>{{msg}}</h1>
+            <h1 style="color: yellow;">{{msg}}</h1>
             {%endfor%}
         </div>
-        <div class="col-sm-6" style="background-color: #343a40; color: white; height: 300px; padding-top: 6%;">
-            <h1 style="text-align: center;">About Me</h1>
+        <div class="col-sm-6" style="background-color: black; color: white; height: 300px; padding-top: 6%;">
+            <h1 style="text-align: center; color: yellow;" >About Me</h1>
             <p style="text-align: justify; ">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam sed amet rem voluptas perferendis, iusto possimus unde explicabo soluta similique minus doloribus nesciunt velit est, dolorem blanditiis exercitationem, cumque quasi!</p>
         </div>
     </div>

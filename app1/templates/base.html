@@ -18,7 +18,7 @@
     
     <nav class="navbar navbar-expand-md   navbar-dark">
         <!-- Brand -->
-        <a class="navbar-brand" href="#"><span style="color: orangered;">TATA</span> &nbsp; <span style="color: yellow;">HOSPITAL</span></a>
+        <a class="navbar-brand" href="#"><span style="color: orangered;">AP VARKEY</span> <span style="color: yellow;">  MISSION HOSPITAL</span></a>
       
         <!-- Toggler/collapsibe Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -28,27 +28,27 @@
           <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link {% if request.resolver_match.url_name == 'about'%} active {% endif %}" href="{% url 'about' %}">About</a>
+                <a class="nav-link {% if request.resolver_match.url_name == 'about'%} active {% endif %}" href="{% url 'about' %}">ABOUT</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'section_view'%} active {% endif %}" href="{% url 'section_view'%}">ADD SECTION</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link {% if request.resolver_match.url_name == 'adminlogout'%} active {% endif %}" href="{% url 'adminlogout'%}">Logout</a>
+                <a class="nav-link {% if request.resolver_match.url_name == 'admin_doct_view'%} active {% endif %}" href="{% url 'admin_doct_view'%}">DOCTORS</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {% if request.resolver_match.url_name == 'sections'%} active {% endif %}" href="{% url 'sections'%}">Add Section</a>
+                <a class="nav-link {% if request.resolver_match.url_name == 'admin_staff_view'%} active {% endif %}" href="{% url 'admin_staff_view'%}">STAFFS</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {% if request.resolver_match.url_name == 'admin_doct_view'%} active {% endif %}" href="{% url 'admin_doct_view'%}">Doctors</a>
+                <a class="nav-link {% if request.resolver_match.url_name == 'admin_patient_view'%} active {% endif %}" href="{% url 'admin_patient_view'%}">PATIENTS</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {% if request.resolver_match.url_name == 'admin_staff_view'%} active {% endif %}" href="{% url 'admin_staff_view'%}">Staffs</a>
+                <a class="nav-link {% if request.resolver_match.url_name == 'profile_admin'%} active {% endif %}" href="{% url 'profile_admin'%}">PROFILE</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {% if request.resolver_match.url_name == 'admin_patient_view'%} active {% endif %}" href="{% url 'admin_patient_view'%}">Patients</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link {% if request.resolver_match.url_name == 'profile_admin'%} active {% endif %}" href="{% url 'profile_admin'%}">Profile</a>
-              </li>
-              
+                <a class="nav-link {% if request.resolver_match.url_name == 'adminlogout'%} active {% endif %}" href="{% url 'adminlogout'%}">LOG OUT</a>
+            </li>
               
             </ul>
           </div>
@@ -57,17 +57,18 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link {% if request.resolver_match.url_name == 'index'%} active {% endif %}" active href="{% url 'index'%}">Home</a>
+              <a class="nav-link {% if request.resolver_match.url_name == 'index'%} active {% endif %}" active href="{% url 'index'%}">HOME</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link {% if request.resolver_match.url_name == 'adminlogin'%} active {% endif %}" href="{% url 'adminlogin'%}">Login</a>  
-              </li>
-           
               <li class="nav-item">
-                <a class="nav-link {% if request.resolver_match.url_name == 'staff_login'%} active {% endif %}" href="{% url 'staff_login'%}">Staff Login</a>
+                <a class="nav-link {% if request.resolver_match.url_name == 'staff_login'%} active {% endif %}" href="{% url 'staff_login'%}">STAFFS</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {% if request.resolver_match.url_name == 'doctor_login'%} active {% endif %}" href="{% url 'doctor_login'%}">Doctor Login</a>
+                <a class="nav-link {% if request.resolver_match.url_name == 'doctor_login'%} active {% endif %}" href="{% url 'doctor_login'%}">DOCTORS</a>
+                  
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'adminlogin'%} active {% endif %}" href="{% url 'adminlogin'%}">ADMINS</a>  
               </li>
 
 

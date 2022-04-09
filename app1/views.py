@@ -94,25 +94,8 @@ def adminlogout(request):
 
 #--------------------------------------------------------staff area------------------------------------------------------
 
-
-# @login_required(login_url='adminlogin')
-# def add_student(request):
-#     if request.method== 'POST':
-#         name=request.POST['name']
-#         address=request.POST['addr']
-#         dob=request.POST['age']
-#         join=request.POST['date']
-#         sel1=request.POST['sel']
-#         course1= course.objects.get(id=sel1)
-#         std=student(
-#             std_name=name,
-#             std_address=address,
-#             std_age=dob,
-#             join_date=join,
-#             course=course1)
-#         std.save()
-#         return redirect('show')
-#     return render(request, 'student.html')
+def staff_logs(request):
+    return render(request, 'staff_login_pro.html')
 
 def staff_login(request):
     return render(request, 'staff_login.html')
@@ -140,13 +123,13 @@ def login_stf(request):
 
             else:
                 messages.info(request, 'invalid username and password, try again')
-                return redirect('loginpage')
+                return redirect('staff_login')
 
         else:
             messages.info(request, 'invalid username and password, try again')
-            return redirect('loginpage')
+            return redirect('staff_login')
     else:
-        return redirect('loginpage')
+        return redirect('staff_login')
 
 def login_staff(request):
     if request.method=="POST":
@@ -188,6 +171,9 @@ def login_staff(request):
 #-----------------------------------------------------login doctor--------------------------------
 
 
+def doctor_logs(request):
+    return render(request, 'doctor_login_pro.html')
+
 def doctor_login(request):
     return render(request, 'doctor_login.html')
 
@@ -215,13 +201,13 @@ def doctor_stf(request):
                 return render(request,'doctor pro.html',{'ps':ps})
             else:
                 messages.info(request, 'invalid username and password, try again')
-                return redirect('loginpage')
+                return redirect('doctor_login')
 
         else:
             messages.info(request, 'invalid username and password, try again')
-            return redirect('loginpage')
+            return redirect('doctor_login')
     else:
-        return redirect('loginpage')
+        return redirect('doctor_login')
 
 def login_doctor(request):
     if request.method=="POST":
@@ -332,6 +318,31 @@ def patient_view_doctor(request):
 
 
 #**************************************section*********************************************
+
+def delete_section(request,pk):
+    products=section.objects.get(id=pk)
+    products.delete()
+    return redirect('section_view')
+
+#edit section
+def section_edit(request,pk):
+    sect=section.objects.get(id=pk)
+    return render(request,'section._edit.html',{'sect':sect})
+
+def edit_section(request,pk):
+        if request.method=='POST':
+            products = section.objects.get(id=pk)
+            products.Section_name=request.POST.get('section_name')
+            products.room_no=request.POST.get('room_no')
+            products.save()
+            return redirect('section_view')
+        return render(request, 'section.html')
+    
+
+def section_view(request):
+    sec=section.objects.all()
+    return render(request,'section.html',{'sec':sec})
+
 def sections(request):  #corses
     return render(request,'section.html')
 
@@ -348,7 +359,7 @@ def add_section(request):
         crs.Section_name=cors
         crs.room_no=cfee
         crs.save()
-        return redirect('about')
+        return redirect('section_view')
     return redirect("section.html")
 
 
@@ -481,3 +492,8 @@ def send_aprove(request):
             return redirect('patient_view_doctor')
      return render(request, 'patient_aprovel.html')
 
+
+def delete_patient(request,pk):
+    products=patient.objects.get(id=pk)
+    products.delete()
+    return redirect('patient_view_doctor')

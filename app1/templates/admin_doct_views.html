@@ -2,16 +2,17 @@
 
 {% load static %}
 {% block content %}
-<div class="containser m-5" >
+<div class="containser"  style="background-color: black;">
     <div class="row" >
         {% for t in dt %}
         <div class="col-md-3">
-            <div class="card m-4" style="width: 18rem;height: auto;text-align: center;">
+            <div class="card m-4" style="width: 18rem;height: auto;text-align: center; background-color: rgb(20, 19, 19);">
                 <img class="card-img-top" style=" height: 300px; width: 18rem;" src="{{t.items.url}}">
                 <div class="card-body">
-                    <h5 class="card-title">{{t.name}}</h5>
-                    <h5 class="card-title">Section:&nbsp;{{t.section.Section_name}}</h5>
-                    <h5 class="card-title">Section:&nbsp;{{t.number}}</h5>
+                    <h5 class="card-title" style="color: yellow;">Name: &nbsp {{t.name}}</h5>
+                    <h5 class="card-title" style="color: white;">Section:&nbsp;{{t.section.Section_name}}</h5>
+                    <h5 class="card-title" style="color: white;">Number:&nbsp;{{t.number}}</h5>
+                    <h5 class="card-title" style="color: white;">Email:&nbsp;{{t.mail}}</h5>
 
                 </div>
             </div>

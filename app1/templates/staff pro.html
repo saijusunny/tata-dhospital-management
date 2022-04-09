@@ -1,21 +1,9 @@
-{% extends 'base doctor.html' %}
+{% extends 'base staff.html' %}
 
 {% block content %}
 
 
 
-<div class="row">
-    <div class="col-sm-12">
-    {% for message in messages %}
-        <h5>
-            <div class="alert alert-danger">
-            {{ message}}
-            </div>
-        </h5>
-    {%endfor%}
-
-    </div>
-</div>
 
 
 
@@ -24,7 +12,7 @@
 
 
 
-<div class="container-fluid" style="background-color: #838f9c;">
+<div class="container-fluid" style="background-color:black;">
   <div class="row">
     <div class="col-sm-12">
       <h1 style="text-align: center; color: white;">Profile</h1>
@@ -32,13 +20,13 @@
   </div>
     <div class="row">
         {% for i in ps %}
-        <div class="col-sm-4">
+        <div class="col-sm-4" style="text-align: center; margin-top: 3%;">
             {% if i.image == 'static/image/icon.png' %}
             <img src="{% static 'image/icon.png' %}" class="w-75">
          
           {% else %}
           
-            <img src="{{i.item.url}}" class="w-75" style="border-radius: 50%;">
+            <img src="{{i.item.url}}" class="w-75" >
          
          {% endif %}
         </div>
