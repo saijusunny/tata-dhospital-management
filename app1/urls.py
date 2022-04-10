@@ -46,6 +46,7 @@ urlpatterns = [
     path('doctor_stf', views.doctor_stf, name="doctor_stf"),
     path('pro_doctor',views.pro_doctor,name='pro_doctor'),
     path('doctor_logs', views.doctor_logs, name="doctor_logs"),
+    path('patient_flt', views.patient_flt, name='patient_flt'),
     
 #**********************************************************************************************************
     
@@ -80,7 +81,7 @@ path('delete_section/<int:pk>',views.delete_section, name='delete_section'),
 
 
 
-#------------------------------adminb Views----------------
+#------------------------------admin Views----------------
 path('admin_doct_view', views.admin_doct_view, name='admin_doct_view'),
 path('admin_staff_view', views.admin_staff_view, name='admin_staff_view'),
 path('admin_patient_view', views.admin_patient_view, name='admin_patient_view'),
@@ -91,5 +92,19 @@ path('edit_details/<int:pk>', views.edit_details, name='edit_details'),
 path('edit_admin_pro/<int:pk>', views.edit_admin_pro, name='edit_admin_pro'),
 path('aprove/<int:pk>',views.aprove, name='aprove'),
 path('send_aprove',views.send_aprove, name='send_aprove'),
+path('admin_patient_flt', views.admin_patient_flt, name='admin_patient_flt'),
+path('admin_aprove/<int:pk>', views.admin_aprove, name='admin_aprove'),
+path('admin_send_aprove',views.admin_send_aprove, name='admin_send_aprove'),
+path('admin_delete_patient/<int:pk>',views.admin_delete_patient, name='admin_delete_patient'),
+path('admin_delete_staff/<int:pk>',views.admin_delete_staff, name='admin_delete_staff'),
+path('admin_delete_doctor/<int:pk>',views.admin_delete_doctor, name='admin_delete_doctor'),
+
+path('edit_doctor_details/<int:pk>',views.edit_doctor_details, name='edit_doctor_details'),
+# path('edit_doctor/<int:pk>', views.edit_doctor,name='edit_doctor'),
+
+
+path('admin_doct_flt', views.admin_doct_flt, name='admin_doct_flt'),
+
+path('admin_staff_flt', views.admin_staff_flt, name='admin_staff_flt'),
 
 ]

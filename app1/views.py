@@ -2,6 +2,7 @@
 
 import os
 from pydoc import doc
+from queue import Empty
 from unicodedata import name
 from urllib import request
 from django.shortcuts import redirect, render
@@ -171,6 +172,8 @@ def login_staff(request):
 #-----------------------------------------------------login doctor--------------------------------
 
 
+
+
 def doctor_logs(request):
     return render(request, 'doctor_login_pro.html')
 
@@ -294,8 +297,22 @@ def patient_reg(request):
 
 def patient_view_doctor(request):
     print ("hai")
-    result= patient.objects.all()
-    return render(request, 'patient_view_doctor.html',{'result':result})
+    lkt=patient.objects.all()
+    stc=section.objects.all()
+    return render(request,'patient_view_doctor.html',{'stc':stc, 'lkt':lkt})
+
+
+def patient_flt(request):
+    sect=request.POST['sct']
+    if sect=='All Sections':
+        return redirect('patient_view_doctor')
+    else:
+        print(sect)
+        stc=section.objects.all()
+        lkt=patient.objects.filter(section=sect)
+        return render(request,'patient_view_doctor.html',{'lkt':lkt,'stc':stc, 'sect':sect})
+
+
 # add student functions
 # @login_required(login_url='adminlogin')
 # def add_student(request):
@@ -371,17 +388,58 @@ def doctor_signup(request):
 
 
 #----admin view-------------------------------------
+@login_required(login_url='adminlogin')
 def admin_doct_view(request):
+    stc=section.objects.all()
     dt=doctor.objects.all()
-    return render(request, 'admin_doct_views.html', {'dt':dt})
+    return render(request, 'admin_doct_views.html', {'dt':dt, 'stc':stc})
 
+@login_required(login_url='adminlogin')
+def admin_doct_flt(request):
+    sect=request.POST['sct']
+    if sect=='All Sections':
+        return redirect('admin_doct_view')
+    else:
+        print(sect)
+        stc=section.objects.all()
+        dt=doctor.objects.filter(section=sect)
+        return render(request,'admin_doct_views.html',{'dt':dt,'stc':stc})
+
+@login_required(login_url='adminlogin')
+
+def admin_staff_flt(request):
+    sect=request.POST['sct']
+    if sect=='All Sections':
+        return redirect('admin_staff_view')
+    else:
+        print(sect)
+        stc=section.objects.all()
+        dt=staff.objects.filter(section=sect)
+        return render(request,'admin_stf_view.html',{'dt':dt,'stc':stc})
+
+@login_required(login_url='adminlogin')
 def admin_staff_view(request):
+    stc=section.objects.all()
     dt=staff.objects.all()
-    return render(request, 'admin_stf_view.html', {'dt':dt})
+    return render(request, 'admin_stf_view.html', {'dt':dt, 'stc':stc})
 
+@login_required(login_url='adminlogin')
 def admin_patient_view(request):
-    dt=patient.objects.all()
-    return render(request, 'admin_patient details.html', {'dt':dt})
+    lkt=patient.objects.all()
+    stc=section.objects.all()
+    return render(request,'admin_patient details.html',{'stc':stc, 'lkt':lkt})
+
+@login_required(login_url='adminlogin')
+def admin_patient_flt(request):
+    sect=request.POST['sct']
+    if sect=='All Sections':
+        return redirect('admin_patient_view')
+    else:
+        print(sect)
+        stc=section.objects.all()
+        lkt=patient.objects.filter(section=sect)
+        return render(request,'admin_patient details.html',{'lkt':lkt,'stc':stc, 'sect':sect})
+
 
 
 #admin signup
@@ -430,6 +488,7 @@ def edit_admin_pro(request,pk):
     return render(request,'admin_edit.html', {'products':products})
 
 @login_required(login_url='adminlogin')
+@login_required(login_url='adminlogin')
 def edit_details(request,pk):
     if request.method=='POST':
         products = userlogin.objects.get(id=pk)
@@ -455,6 +514,41 @@ def edit_details(request,pk):
         return redirect('profile_admin')
     return render(request, 'admin_edit.html')
 
+@login_required(login_url='adminlogin')
+def admin_aprove(request,pk):
+    ltt=patient.objects.get(id=pk)
+    return render(request, 'admin_patient_aprovel.html',{'ltt':ltt})
+@login_required(login_url='adminlogin')     
+def admin_send_aprove(request):
+     if request.method=='POST':
+            name=request.POST['name']
+            address=request.POST['address']
+            mob=request.POST['mobile']
+            em=request.POST['email']
+            dob=request.POST['age']
+            sec=request.POST['sct']
+            tibf=request.POST['timebf']
+            tiaf=request.POST['timeaf']
+            dt=request.POST['date']
+            dct=request.POST['dctr']
+            print(name)
+            print(address)
+            print(mob)
+            print(dob)
+            print(sec)
+            print(tiaf)
+            print(dt) 
+            subject='Visiting Message From Ap Varkey Mission Hospital  ' #subject
+            message='Dear, '+name+'\n\n Your Checkup Request is Accepted \n\nConselted By: Dr.'+dct+ '\n\n\nVisiting Time:'+tiaf+'To'+tibf+'\n\nVisiting Date:'+dt+'\n\n\n Help Desk No:0000124578 \n\n\n Help Desk Email:saijusunny1301@gmail.com\n\n\n Please Visit Before The Given Ending Time \n\n\n Thank You' #messege
+            recipient=em
+            send_mail(subject, message, settings.EMAIL_HOST_USER, [recipient], fail_silently=False)
+            return redirect('admin_patient_view')
+     return render(request, 'admin_patient_aprovel.html')
+
+def admin_delete_patient(request,pk):
+    products=patient.objects.get(id=pk)
+    products.delete()
+    return redirect('admin_patient_view')
 
 #send mail
 from django.conf import settings
@@ -485,15 +579,48 @@ def send_aprove(request):
             print(sec)
             print(tiaf)
             print(dt) 
-            subject='Lerning softwere' #subject
+            subject='Visiting Message From Ap Varkey Mission Hospital  ' #subject
             message='Dear, '+name+'\n\n Your Checkup Request is Accepted \n\nConselted By: Dr.'+dct+ '\n\n\nVisiting Time:'+tiaf+'To'+tibf+'\n\nVisiting Date:'+dt+'\n\n\n Help Desk No:0000124578 \n\n\n Help Desk Email:saijusunny1301@gmail.com\n\n\n Please Visit Before The Given Ending Time \n\n\n Thank You' #messege
             recipient=em
             send_mail(subject, message, settings.EMAIL_HOST_USER, [recipient], fail_silently=False)
             return redirect('patient_view_doctor')
      return render(request, 'patient_aprovel.html')
 
+@login_required(login_url='adminlogin')
+def admin_delete_staff(request,pk):
+    products=staff.objects.get(id=pk)
+    products.delete()
+    return redirect('admin_staff_view')
 
+@login_required(login_url='adminlogin')
+def admin_delete_doctor(request,pk):
+    products=doctor.objects.get(id=pk)
+    products.delete()
+    return redirect('admin_doct_view')
+
+@login_required(login_url='adminlogin')
 def delete_patient(request,pk):
     products=patient.objects.get(id=pk)
     products.delete()
     return redirect('patient_view_doctor')
+
+
+#Edit doctors:
+@login_required(login_url='adminlogin')
+def edit_doctor(request,pk):
+    products=doctor.objects.get(id=pk)
+    return render(request,'edit_doctors pro.html', {'products':products})
+
+@login_required(login_url='adminlogin')
+def edit_doctor_details(request,pk):
+    if request.method=='POST':
+        products = doctor.objects.get(id=pk)
+        products.name=request.POST.get('name')
+        products.username=request.POST.get('username')
+        products.password=request.POST.get('password')
+        products.number=request.POST.get('number')
+        products.mail=request.POST.get('mail')
+        products.section=request.POST.get('sct')
+        products.save()
+        return redirect('admin_doct_view')
+    return render(request, 'admin_edit.html')

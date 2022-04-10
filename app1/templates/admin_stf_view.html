@@ -3,6 +3,25 @@
 {% load static %}
 {% block content %}
 <div class="containser "  style="background-color: black;">
+
+    <div class="row" style="background-color: black; text-align: center;" >
+        <div class="col-sm-8" style="margin: 0 auto;">
+            <form action="{% url 'admin_staff_flt'%}" class="form" method="POST">
+                {% csrf_token%}
+                <select name="sct" style="margin-top: 1%;" class="form-control" style="color:black; font-weight:bold"  class="form-control">
+                    <option style="color:black; font-weight:bold"> Enter Your Section</option>
+                    <option style="color:black; font-weight:bold"> All Sections</option>
+                   
+                    {% for section in stc %}
+                    
+                    <option value="{{section.id}}" style="color:black; font-weight:bold">{{ section.Section_name}}</option>
+                    {%endfor%}
+                </select><br>
+                <input type="submit" value="Search" class="btn btn-success" id="">
+            </form>
+        </div>
+    </div>
+
     <div class="row" >
         {% for t in dt %}
         <div class="col-md-3">
@@ -13,6 +32,7 @@
                     <h5 class="card-title"style="color: white;">Section:&nbsp;{{t.section.Section_name}}</h5>
                     <h5 class="card-title"style="color: white;">Mobile No:&nbsp;{{t.number}}</h5>
                     <h5 class="card-title"style="color: white;">Email:&nbsp;{{t.mail}}</h5>
+                    <a href="{% url 'admin_delete_staff' t.id%}"> <input type='submit' class="btn btn-danger"value="Delete" onclick="alert('Delete Staff')" name="" id=""></a>
 
                 </div>
             </div>

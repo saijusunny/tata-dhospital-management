@@ -2,11 +2,27 @@
 
 {% block content %}
 <div class="container">
+    <div class="row" style="background-color: black; text-align: center;" >
+        <div class="col-sm-8" style="margin: 0 auto;">
+            <form action="{% url 'patient_flt'%}" class="form" method="POST">
+                {% csrf_token%}
+                <select name="sct" style="margin-top: 1%;" class="form-control" style="color:black; font-weight:bold"  class="form-control">
+                    <option style="color:black; font-weight:bold"> Enter Your Section</option>
+                    <option style="color:black; font-weight:bold"> All Sections</option>
+                    {% for section in stc %}
+                    
+                    <option value="{{section.id}}" style="color:black; font-weight:bold">{{ section.Section_name}}</option>
+                    {%endfor%}
+                </select><br>
+                <input type="submit" value="Search" class="btn btn-success" id="">
+            </form>
+        </div>
+    </div>
     <div class="row" >
-        <div class="col-sm-12"  style="background-color: black; margin:1% auto">
+        <div class="col-sm-12"  style="background-color: black; margin:0 auto">
 
             <table class="table" style="text-align: center;">
-                <h1 style="color: white; margin-top: 1%; margin-bottom: 3%; text-align: center;">Patient Details</h1>
+                <h1 style="color: white; margin-top: 1%; margin-bottom: 3%; text-align: center;">Patient Details </h1>
                 <thead>
                     <tr>
                         <th  style="color: yellow;">ID</th>
@@ -22,7 +38,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for i in result %}
+                    {% for i in lkt %}
                     <tr>
                         <td style="color:rgb(255, 255, 255);">{{i.id}}</td>
                         <td style="color:rgb(255, 255, 255);">{{i.name}}</td>

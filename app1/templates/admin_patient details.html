@@ -2,10 +2,27 @@
 
 {% block content %}
 <div class="container">
+    <div class="row" style="background-color: black; text-align: center;" >
+        <div class="col-sm-8" style="margin: 0 auto;">
+            <form action="{% url 'admin_patient_flt'%}" class="form" method="POST">
+                {% csrf_token%}
+                <select name="sct" style="margin-top: 1%;" class="form-control" style="color:black; font-weight:bold"  class="form-control">
+                    <option style="color:black; font-weight:bold"> Enter Your Section</option>
+                    <option style="color:black; font-weight:bold"> All Sections</option>
+                    {% for section in stc %}
+                    
+                    <option value="{{section.id}}" style="color:black; font-weight:bold">{{ section.Section_name}}</option>
+                    {%endfor%}
+                </select><br>
+                <input type="submit" value="Search" class="btn btn-success" id="">
+            </form>
+        </div>
+    </div>
     <div class="row" >
-        <div class="col-sm-12"  style="background-color: black; margin:1% auto">
+        <div class="col-sm-12"  style="background-color: black; margin:0 auto">
+
             <table class="table" style="text-align: center;">
-                <h1 style="color: white; margin-top: 1%; margin-bottom: 3%; text-align: center;">Patient Details</h1>
+                <h1 style="color: white; margin-top: 1%; margin-bottom: 3%; text-align: center;">Patient Details </h1>
                 <thead>
                     <tr>
                         <th  style="color: yellow;">ID</th>
@@ -21,19 +38,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for i in dt %}
+                    {% for i in lkt %}
                     <tr>
-                        <td style="color: white;">{{i.id}}</td>
-                        <td style="color: white;">{{i.name}}</td>
-                        <td style="color: white;">{{i.address}}</td>
-                        <td style="color: white;">{{i.mobile}}</td>
-                        <td style="color: white;">{{i.email}}</td>
-                        <td style="color: white;">{{i.age}}</td>
-                        <td style="color: white;">{{i.section.Section_name}}</td>
+                        <td style="color:rgb(255, 255, 255);">{{i.id}}</td>
+                        <td style="color:rgb(255, 255, 255);">{{i.name}}</td>
+                        <td style="color:rgb(255, 255, 255);">{{i.address}}</td>
+                        <td style="color:rgb(255, 255, 255);">{{i.mobile}}</td>
+                        <td style="color:rgb(255, 255, 255);">{{i.email}}</td>
+                        <td style="color:rgb(255, 255, 255);">{{i.age}}</td>
+                        <td style="color:rgb(255, 255, 255);">{{i.section.Section_name}}</td>
                         <td>
-                            <a href="{% url 'aprove' i.id%}"><button type="submit" class="btn btn-success btn-sm mx-5 my-3"> Approve </button></a><br>
+                            <a href="{% url 'admin_aprove' i.id%}"><button type="submit" class="btn btn-success btn-sm mx-5 my-3"> Approve </button></a><br>
 
-                           <a href="{% url 'delete_patient' i.id%}"><button type="submit" class="btn btn-danger btn-sm mx-5 my-3" onclick="alert('Declain Aprovel')"> Declain </button></a>
+                           <a href="{% url 'admin_delete_patient' i.id%}"><button type="submit" class="btn btn-danger btn-sm mx-5 my-3" onclick="alert('Declain Aprovel')"> Declain </button></a>
                         </td>
                        
                     </tr>

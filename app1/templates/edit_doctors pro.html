@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8" style="margin: 5% auto; text-align: center; background-color: black; margin-bottom: 5%;">
+
+                <h1 style="color: yellow; margin-top: 2%;" >Signup Section</h1>
+
+
+                <form action="/edit_doctor_details/{{products.pk}}" class="form" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}  
+
+                    <input type="text"  name="name" value="{{products.name}}" class="form-control"><br>
+                    <input type="text"  name="username" value="{{products.username}}" class="form-control"><br>
+                    <input type="password"  name="password" value="{{products.password}}" class="form-control"><br>
+                    <input type="password"  name="number" value="{{products.number}}" class="form-control"><br>
+ 
+
+                    <input type="email"  name="mail" value="{{products.mail}}" class="form-control"><br>
+                    <select name="sct" style="margin-top: 1%;" style="color:black; font-weight:bold"  class="form-control">
+                        <option>{products.section.Section_name}</option>
+                        {% for section in products %}
+                        <option style="color:black; font-weight:bold" value="{{section.id}}">{{ products.section.Section_name}}</option>
+                        {%endfor%}
+                    </select><br>
+
+                    <input type="submit" value="Save" class="btn btn-success" style="margin-bottom:3%">
+
+                </form>
+
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
