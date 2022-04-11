@@ -14,6 +14,148 @@ from app1.models import patient, staff, section
 from app1.models import doctor
 from .models import userlogin
 
+def logs_all(request):
+    return render(request, 'login._all.html')
+
+def login_all(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        # request.session['uid'] = user.id #visable pages using session method
+        if User.objects.filter(username=username).exists():
+            user = auth.authenticate(username=username, password=password)
+            if user is not None:
+                # login(request, user) #this function is login visable pages using django login session method
+                auth.login(request, user)
+                messages.info(request, f'Welcome {username}')#pass users name to welcome page
+                return redirect('about')
+            else:
+                messages.info(request, 'invalid username and password, try again')
+                return redirect('logs_all')
+
+        elif staff.objects.filter(username=username).exists():
+           
+            if staff.objects.filter(password=password).exists():
+                    ps=staff.objects.filter(username=username )
+                    return render(request,'staff pro.html',{'ps':ps})
+
+            else:
+                messages.info(request, 'invalid username and password, try again')
+                return redirect('logs_all')
+        elif doctor.objects.filter(username=username).exists():
+            if doctor.objects.filter(password=password).exists():
+                pkl=doctor.objects.filter(username=username )
+                return render(request,'doctor pro.html',{'ps':pkl})
+        else:
+            messages.info(request, 'invalid username and password, try again')
+            return redirect('logs_all')
+    else:
+        return redirect('logs_all')
+
+def sign_all(request):
+    ltts=section.objects.all()
+    return render(request,'signup_all.html', {'ltts':ltts})
+
+def signup_all(request):
+    if request.method=="POST":
+        destination = request.POST['destini']
+        if destination=="STAFF":
+            nm=request.POST['name']
+            username=request.POST['username']
+            password=request.POST['password']
+            cpass=request.POST['cpassword']
+            email=request.POST['email']
+            sec=request.POST['sct']
+            course1= section.objects.get(id=sec)
+            nb=request.POST['phnumber']
+            if request.FILES.get('file') is not None:
+                image=request.FILES['file']
+            else:
+                image = "static/image/icon.png"
+            if password==cpass:
+                if staff.objects.filter(username=username).exists():
+                    messages.info(request, 'This Username Is Already Exists!!!!!')
+                    return redirect('signup')
+                else:
+                    user=staff(
+                        name=nm,
+                        username=username,
+                        password=password,
+                        mail=email,
+                        section=course1,
+                        number=nb,
+                        item=image,
+                    )
+                    user.save()
+            else:
+                messages.info(request, 'Password doesnot match!!!!!')
+                return redirect('staffreg')
+            return redirect('staff_login')
+        elif destination=="DOCTOR":
+            nm=request.POST['name']
+            username=request.POST['username']
+            password=request.POST['password']
+            cpass=request.POST['cpassword']
+            email=request.POST['email']
+            sec=request.POST['sct']
+            course1= section.objects.get(id=sec)
+            nb=request.POST['phnumber']
+            if request.FILES.get('file') is not None:
+                image=request.FILES['file']
+            else:
+                image = "static/image/icon.png"
+            if password==cpass:
+                if doctor.objects.filter(username=username).exists():
+                    messages.info(request, 'This Username Is Already Exists!!!!!')
+                    return redirect('signup')
+                else:
+                    user=doctor(
+                        name=nm,
+                        username=username,
+                        password=password,
+                        mail=email,
+                        section=course1,
+                        number=nb,
+                        items=image,
+                    )
+                    user.save()
+            else:
+                messages.info(request, 'Password doesnot match!!!!!')
+                return redirect('log')
+            return redirect('doctor_login')
+        elif destination=="ADMIN":
+            fname=request.POST['name']
+            lname=request.POST['last_name']
+            username=request.POST['username']
+            password=request.POST['password']
+            cpass=request.POST['cpassword']
+            email=request.POST['email']
+
+            if password==cpass:
+                if User.objects.filter(username=username).exists():
+                    messages.info(request, 'This Username Is Already Exists!!!!!')
+                    return redirect('signup')
+                else:
+                    user=User.objects.create_user(
+                        first_name=fname,
+                        last_name=lname,
+                        username=username,
+                        password=password,
+                        email=email,
+                    )
+                    user.save()
+            else:
+                messages.info(request, 'Password doesnot match!!!!!')
+                return redirect('signup')
+            return redirect('adminlogin')
+
+        else:
+            return redirect ('sign_all')
+
+        
+    else:
+        return render(request, 'signup.html')
+
 def index(request):
     return render(request, 'index.html')
 
@@ -589,10 +731,7 @@ def send_aprove(request):
 @login_required(login_url='adminlogin')
 def admin_delete_staff(request,pk):
     products=staff.objects.get(id=pk)
-    if not products.item =="static/image/icon.png":
-        os.remove(products.items.path)
-    else:
-        pass
+    
     products.delete()
     return redirect('admin_staff_view')
 

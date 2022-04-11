@@ -5,7 +5,13 @@ from.import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-   
+   path('login_all', views.login_all, name='login_all'),
+
+    path('logs_all', views.logs_all, name='logs_all'),
+      path('sign_all', views.sign_all, name='sign_all'),
+
+    path('signup_all', views.signup_all, name='signup_all'),
+
 
 #------------------------------------------------home area -------------------------------------
     path('', views.index, name='index'),
@@ -107,5 +113,8 @@ path('edit_doctor_details/<int:pk>',views.edit_doctor_details, name='edit_doctor
 path('admin_doct_flt', views.admin_doct_flt, name='admin_doct_flt'),
 
 path('admin_staff_flt', views.admin_staff_flt, name='admin_staff_flt'),
+
+
+
 
 ]

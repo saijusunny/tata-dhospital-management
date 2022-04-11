@@ -59,18 +59,11 @@
             <li class="nav-item">
               <a class="nav-link {% if request.resolver_match.url_name == 'index'%} active {% endif %}" active href="{% url 'index'%}">HOME</a>
             </li>
-              <li class="nav-item">
-                <a class="nav-link {% if request.resolver_match.url_name == 'staff_login'%} active {% endif %}" href="{% url 'staff_login'%}">STAFFS</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link {% if request.resolver_match.url_name == 'doctor_login'%} active {% endif %}" href="{% url 'doctor_login'%}">DOCTORS</a>
-                  
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link {% if request.resolver_match.url_name == 'adminlogin'%} active {% endif %}" href="{% url 'adminlogin'%}">ADMINS</a>  
-              </li>
 
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'logs_all'%} active {% endif %}" href="{% url 'logs_all'%}">LOG IN</a>  
+              </li>
+              
 
               
           </ul>

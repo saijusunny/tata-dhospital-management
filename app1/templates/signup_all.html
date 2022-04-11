@@ -1,0 +1,64 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      
+      {% for message in messages %}
+      <h5 style="text-align: center;">
+        <div class="alert alert-danger">
+          {{ message}}
+          </div>
+      </h5>
+      {%endfor%}
+    
+    </div>
+  </div>
+</div>
+<div class="container">
+  
+  <div class="row">
+    <div class="col-sm-8" style="text-align: center; margin: 5% auto; background-color: black; padding-top: 3%;" >
+
+      <form action="{% url 'signup_all'%}" method="POST" class="form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1 style="color: yellow;">Sign Up</h1>
+        <!-- <label>First Name</label> -->
+        <input type="text" name="name"  placeholder=" First Name" class="form-control">
+        <input type="text" name="last_name"  placeholder="Last Name" class="form-control">
+        <!-- <label>Username</label> -->
+        <input type="text" name="username" placeholder="Username" style="margin-top: 1%;" class="form-control">
+        <!-- <label>Password</label> -->
+        <input type="password" name="password" placeholder="Password" style="margin-top: 1%;" class="form-control">
+        <!-- <label> Confirm Password</label> -->
+        <input type="password" name="cpassword" placeholder="Confirm Password" style="margin-top: 1%;" class="form-control">
+        <!-- <label>Email</label> -->
+        <input type="email" name="email" placeholder="Email" style="margin-top: 1%;" class="form-control">
+        <input type="number" name="phnumber" placeholder="phnumber" style="margin-top: 1%;" class="form-control">
+        <input type="file" placeholder="Image" name="file" style="margin-top: 1%;" class="form-control" accept ='image/'><br>
+        <select name="destini" id="" class="form-control">
+            
+            <option >STAFF</option>
+            <option >DOCTOR</option>
+            <option>ADMIN</option>
+            
+            
+        </select><br>
+        
+        <select name="sct" id="" class="form-control">
+          {% for section in ltts %}
+          <option value="{{section.id}}">{{ section.Section_name}}</option>
+          {%endfor%}
+      </select><br>
+        
+        <input type="submit" class="btn btn-light" value="Sign Up" style="margin: 1% auto;" >
+
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
