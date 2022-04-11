@@ -26,7 +26,15 @@
         {% for t in dt %}
         <div class="col-md-3">
             <div class="card m-4" style="width: 18rem;height: auto;text-align: center; background-color: rgb(20, 19, 19)">
-                <img class="card-img-top" style=" height: 300px; width: 18rem;" src="{{t.item.url}}">
+                {% if t.item == 'static/image/icon.png' %}
+                <img src="{% static 'image/default.jpg' %}" class="card-img-top" style=" height: 300px; width: 18rem;">
+             
+                {% else %}
+              
+                <img src="{{ t.item.url }}" class="card-img-top" style=" height: 300px; width: 18rem;">
+             
+                {% endif %}
+                
                 <div class="card-body">
                     <h5 class="card-title"style="color: yellow;">Name: &nbsp {{t.name}}</h5>
                     <h5 class="card-title"style="color: white;">Section:&nbsp;{{t.section.Section_name}}</h5>

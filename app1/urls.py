@@ -98,6 +98,7 @@ path('admin_send_aprove',views.admin_send_aprove, name='admin_send_aprove'),
 path('admin_delete_patient/<int:pk>',views.admin_delete_patient, name='admin_delete_patient'),
 path('admin_delete_staff/<int:pk>',views.admin_delete_staff, name='admin_delete_staff'),
 path('admin_delete_doctor/<int:pk>',views.admin_delete_doctor, name='admin_delete_doctor'),
+path('delete_admin/<int:pk>',views.delete_admin, name='delete_admin'),
 
 path('edit_doctor_details/<int:pk>',views.edit_doctor_details, name='edit_doctor_details'),
 # path('edit_doctor/<int:pk>', views.edit_doctor,name='edit_doctor'),

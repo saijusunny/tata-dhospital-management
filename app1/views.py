@@ -589,12 +589,20 @@ def send_aprove(request):
 @login_required(login_url='adminlogin')
 def admin_delete_staff(request,pk):
     products=staff.objects.get(id=pk)
+    if not products.item =="static/image/icon.png":
+        os.remove(products.items.path)
+    else:
+        pass
     products.delete()
     return redirect('admin_staff_view')
 
 @login_required(login_url='adminlogin')
 def admin_delete_doctor(request,pk):
     products=doctor.objects.get(id=pk)
+    if not products.items =="static/image/icon.png":
+        os.remove(products.items.path)
+    else:
+        pass
     products.delete()
     return redirect('admin_doct_view')
 
@@ -604,6 +612,15 @@ def delete_patient(request,pk):
     products.delete()
     return redirect('patient_view_doctor')
 
+@login_required(login_url='adminlogin')
+def delete_admin(request,pk):
+    products=userlogin.objects.get(id=pk)
+    if not products.image =="static/image/icon.png":
+                os.remove(products.image.path)
+    else:
+        pass
+    products.delete()
+    return redirect('adminlogin')
 
 #Edit doctors:
 @login_required(login_url='adminlogin')

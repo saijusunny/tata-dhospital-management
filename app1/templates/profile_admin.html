@@ -41,8 +41,8 @@
         
       </form>
 
-      <a href="{% url 'edit_admin_pro' result.id%}" style="margin-left: 40%;"><input type="submit" Value="Edit" class="btn btn-danger" ></a>      
-
+      <a href="{% url 'edit_admin_pro' result.id%}" style="margin-left: 40%;"><input type="submit" Value="Edit" class="btn btn-success" ></a>      
+      <a href="{% url 'delete_admin' result.id%}" ><input type="submit" Value="Delete" class="btn btn-danger" ></a>      
     </div>
     {% endif %}
   </div>
