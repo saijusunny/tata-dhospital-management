@@ -2,53 +2,58 @@
 
 {% block content %}
 
-
-
-
-
-
-
 {% load static %}
 
+<div class="container-fluid" style="background-color: rgb(20, 19, 19); height: auto;">
+  {% for i in ps %}
+<div class="row" style="background-color: black;">
+  <div class="col-sm-12">
+    <h1 style="text-align: center; color: yellow;">PROFILE</h1>
+  </div>
+</div>
+
+<div class="row" style="height: 600px;">
+  <div class="col-sm-4" style="padding-top: 10%; text-align: center; background-color: black;">
+    
+        {% if i.item == 'static/image/icon.png' %}
+        <img src="{% static 'image/icon.png' %}" class="w-75 img-rounded">
+
+      {% else %}
+      
+        <img src="{{i.item.url}}" class="rounded-circle" style="width: 55%; margin-top: -20%;" >
+
+      {% endif %}
+      <div style="text-align: center;"> 
+        <label style="color: yellow;font-size: 20px; font-weight: bold; ">Name:</label>
+        <label style="color: white; font-size: 20px; font-weight: bold; ;">{{i.name}}</label><br>
+        <label style="color: yellow;font-size: 20px; font-weight: bold;"> User Name:</label>
+        <label style="color: white;font-size: 20px; font-weight: bold; ">{{i.username}}</label><br>
+        <label style="color: yellow;font-size: 20px; font-weight: bold;">Password:</label>
+        <label style="color: white;font-size: 20px; font-weight: bold; ">{{i.password}}</label><br>
+        <label style="color: yellow;font-size: 20px; font-weight: bold;">Email:</label>
+        <label style="color: white;font-size: 20px; font-weight: bold; ">{{i.mail}}</label><br>
+        <label style="color: yellow;font-size: 20px; font-weight: bold; ">Mobile:</label>
+        <label style="color: white;font-size: 20px; font-weight: bold; ">{{i.number}}</label><br>
+        <label style="color: yellow;font-size: 20px; font-weight: bold;">Section:</label>
+        <label style="color: white;font-size: 20px; font-weight: bold; ">{{i.section.Section_name}}</label>
+      </div>
 
 
-<div class="container-fluid" style="background-color:black;">
-  <div class="row">
-    <div class="col-sm-12">
-      <h1 style="text-align: center; color: white;">Profile</h1>
+  </div>
+  <div class="col-sm-8" style="text-align: center; padding-top: 15%;">
+    <div>
+      <h1 style="color: green;"> Hai {{i.name}}</h1>
+      <h4 style="color: white;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus nisi obcaecati cupiditate, consequuntur autem inventore magni reiciendis ex voluptatem quo? Veritatis ad asperiores ut tempora consequatur magni deserunt doloribus non?</h4>
+
     </div>
   </div>
-    <div class="row">
-        {% for i in ps %}
-        <div class="col-sm-4" style="text-align: center; margin-top: 3%;">
-            {% if i.item == 'static/image/icon.png' %}
-            <img src="{% static 'image/icon.png' %}" class="w-75">
-         
-          {% else %}
-          
-            <img src="{{i.item.url}}" class="w-75" >
-         
-         {% endif %}
-        </div>
-        <div class="col-sm-8">
-            <form class="form">
-                <label style="color: yellow;">Name:</label><br>
-                <input type="text" class="form-control"  value="{{i.name}}"><br>
-                <label style="color: yellow;"> User Name:</label><br>
-                <input type="text" class="form-control" value="{{i.username}}"><br>
-                <label style="color: yellow;">Password:</label><br>
-                <input type="password" class="form-control" value="{{i.password}}"><br>
-                <label style="color: yellow;">Email:</label><br>
-                <input type="text" class="form-control" value=" {{i.mail}}"><br>
-                <label style="color: yellow;">Mobile:</label><br>
-                <input type="text" class="form-control" value=" {{i.number}}"><br>
-                <label style="color: yellow;">Section:</label><br>
-                <input type="text" class="form-control" value=" {{i.section.Section_name}}"><br>
-                
-              </form>
-        </div>
+</div>
+  
+  
+
+
+
         {% endfor %}
 
-    </div>
-</div>
+
 {% endblock %}

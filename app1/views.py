@@ -58,99 +58,110 @@ def sign_all(request):
 
 def signup_all(request):
     if request.method=="POST":
-        destination = request.POST['destini']
-        if destination=="STAFF":
-            nm=request.POST['name']
-            username=request.POST['username']
-            password=request.POST['password']
-            cpass=request.POST['cpassword']
-            email=request.POST['email']
-            sec=request.POST['sct']
-            course1= section.objects.get(id=sec)
-            nb=request.POST['phnumber']
-            if request.FILES.get('file') is not None:
-                image=request.FILES['file']
-            else:
-                image = "static/image/icon.png"
-            if password==cpass:
-                if staff.objects.filter(username=username).exists():
-                    messages.info(request, 'This Username Is Already Exists!!!!!')
-                    return redirect('signup')
-                else:
-                    user=staff(
-                        name=nm,
-                        username=username,
-                        password=password,
-                        mail=email,
-                        section=course1,
-                        number=nb,
-                        item=image,
-                    )
-                    user.save()
-            else:
-                messages.info(request, 'Password doesnot match!!!!!')
-                return redirect('staffreg')
-            return redirect('staff_login')
-        elif destination=="DOCTOR":
-            nm=request.POST['name']
-            username=request.POST['username']
-            password=request.POST['password']
-            cpass=request.POST['cpassword']
-            email=request.POST['email']
-            sec=request.POST['sct']
-            course1= section.objects.get(id=sec)
-            nb=request.POST['phnumber']
-            if request.FILES.get('file') is not None:
-                image=request.FILES['file']
-            else:
-                image = "static/image/icon.png"
-            if password==cpass:
-                if doctor.objects.filter(username=username).exists():
-                    messages.info(request, 'This Username Is Already Exists!!!!!')
-                    return redirect('signup')
-                else:
-                    user=doctor(
-                        name=nm,
-                        username=username,
-                        password=password,
-                        mail=email,
-                        section=course1,
-                        number=nb,
-                        items=image,
-                    )
-                    user.save()
-            else:
-                messages.info(request, 'Password doesnot match!!!!!')
-                return redirect('log')
-            return redirect('doctor_login')
-        elif destination=="ADMIN":
-            fname=request.POST['name']
-            lname=request.POST['last_name']
-            username=request.POST['username']
-            password=request.POST['password']
-            cpass=request.POST['cpassword']
-            email=request.POST['email']
-
-            if password==cpass:
-                if User.objects.filter(username=username).exists():
-                    messages.info(request, 'This Username Is Already Exists!!!!!')
-                    return redirect('signup')
-                else:
-                    user=User.objects.create_user(
-                        first_name=fname,
-                        last_name=lname,
-                        username=username,
-                        password=password,
-                        email=email,
-                    )
-                    user.save()
-            else:
-                messages.info(request, 'Password doesnot match!!!!!')
-                return redirect('signup')
-            return redirect('adminlogin')
-
+        usr=request.POST['username']
+        if User.objects.filter(username=usr).exists():
+            messages.info(request, 'Username Is Allready Exist,Please Add defrent Username, And Try Again')
+            return redirect('sign_all')
+        elif staff.objects.filter(username=usr).exists():
+            messages.info(request, 'Username Is Allready Exist,Please Add defrent Username, And Try Again')
+            return redirect('sign_all')
+        elif doctor.objects.filter(username=usr).exists():
+            messages.info(request, 'Username Is Allready Exist,Please Add defrent Username, And Try Again')
+            return redirect('sign_all')
         else:
-            return redirect ('sign_all')
+            destination = request.POST['destini']
+            if destination=="STAFF":
+                nm=request.POST['name']
+                username=request.POST['username']
+                password=request.POST['password']
+                cpass=request.POST['cpassword']
+                email=request.POST['email']
+                sec=request.POST['sct']
+                course1= section.objects.get(id=sec)
+                nb=request.POST['phnumber']
+                if request.FILES.get('file') is not None:
+                    image=request.FILES['file']
+                else:
+                    image = "static/image/icon.png"
+                if password==cpass:
+                    if staff.objects.filter(username=username).exists():
+                        messages.info(request, 'This Username Is Already Exists!!!!!')
+                        return redirect('signup')
+                    else:
+                        user=staff(
+                            name=nm,
+                            username=username,
+                            password=password,
+                            mail=email,
+                            section=course1,
+                            number=nb,
+                            item=image,
+                        )
+                        user.save()
+                else:
+                    messages.info(request, 'Password doesnot match!!!!!')
+                    return redirect('staffreg')
+                return redirect('staff_login')
+            elif destination=="DOCTOR":
+                nm=request.POST['name']
+                username=request.POST['username']
+                password=request.POST['password']
+                cpass=request.POST['cpassword']
+                email=request.POST['email']
+                sec=request.POST['sct']
+                course1= section.objects.get(id=sec)
+                nb=request.POST['phnumber']
+                if request.FILES.get('file') is not None:
+                    image=request.FILES['file']
+                else:
+                    image = "static/image/icon.png"
+                if password==cpass:
+                    if doctor.objects.filter(username=username).exists():
+                        messages.info(request, 'This Username Is Already Exists!!!!!')
+                        return redirect('signup')
+                    else:
+                        user=doctor(
+                            name=nm,
+                            username=username,
+                            password=password,
+                            mail=email,
+                            section=course1,
+                            number=nb,
+                            items=image,
+                        )
+                        user.save()
+                else:
+                    messages.info(request, 'Password doesnot match!!!!!')
+                    return redirect('log')
+                return redirect('doctor_login')
+            elif destination=="ADMIN":
+                fname=request.POST['name']
+                lname=request.POST['last_name']
+                username=request.POST['username']
+                password=request.POST['password']
+                cpass=request.POST['cpassword']
+                email=request.POST['email']
+
+                if password==cpass:
+                    if User.objects.filter(username=username).exists():
+                        messages.info(request, 'This Username Is Already Exists!!!!!')
+                        return redirect('signup')
+                    else:
+                        user=User.objects.create_user(
+                            first_name=fname,
+                            last_name=lname,
+                            username=username,
+                            password=password,
+                            email=email,
+                        )
+                        user.save()
+                else:
+                    messages.info(request, 'Password doesnot match!!!!!')
+                    return redirect('signup')
+                return redirect('adminlogin')
+
+            else:
+                return redirect ('sign_all')
 
         
     else:
