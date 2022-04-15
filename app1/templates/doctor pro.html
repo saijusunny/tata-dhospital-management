@@ -1,4 +1,4 @@
-{% extends 'base staff.html' %}
+{% extends 'base doctor.html' %}
 
 {% block content %}
 
@@ -12,15 +12,15 @@
   </div>
 </div>
 
-<div class="row" style="height: 600px;">
-  <div class="col-sm-4" style="padding-top: 10%; text-align: center; background-color: black;">
+<div class="row" style="height:auto;">
+  <div class="col-sm-4" style="padding-top: 3%; padding-bottom: 8%; text-align: center; background-color: black;">
     
         {% if i.items == 'static/image/icon.png' %}
         <img src="{% static 'image/icon.png' %}" class="w-75 img-rounded">
 
       {% else %}
       
-        <img src="{{i.items.url}}" class="rounded-circle" style="width: 55%; margin-top: -20%;" >
+        <img src="{{i.items.url}}" class="rounded-circle" style="width: 55%;" >
 
       {% endif %}
       <div style="text-align: center;"> 

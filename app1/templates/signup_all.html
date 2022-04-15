@@ -27,8 +27,8 @@
         {% csrf_token %}
         <h1 style="color: yellow;">Sign Up</h1>
         <!-- <label>First Name</label> -->
-        <input type="text" name="name"  placeholder=" First Name" class="form-control">
-        <input type="text" name="last_name"  placeholder="Last Name" class="form-control">
+        <input type="text" name="name"  placeholder=" First Name" style="margin-top: 1%;" class="form-control">
+        <input type="text" name="last_name"  placeholder="Last Name" style="margin-top: 1%;" class="form-control">
         <!-- <label>Username</label> -->
         <input type="text" name="username" placeholder="Username" style="margin-top: 1%;" class="form-control">
         <!-- <label>Password</label> -->
@@ -38,17 +38,16 @@
         <!-- <label>Email</label> -->
         <input type="email" name="email" placeholder="Email" style="margin-top: 1%;" class="form-control">
         <input type="number" name="phnumber" placeholder="phnumber" style="margin-top: 1%;" class="form-control">
-        <input type="file" placeholder="Image" name="file" style="margin-top: 1%;" class="form-control" accept ='image/'><br>
-        <select name="destini" id="" class="form-control">
+        <input type="file" placeholder="Image" name="file" style="margin-top: 1%;" class="form-control" accept ='image/'>
+        <select name="destini" id="" class="form-control" style="margin-top: 1%;">
             
             <option >STAFF</option>
             <option >DOCTOR</option>
-            <option>ADMIN</option>
             
             
-        </select><br>
+        </select>
         
-        <select name="sct" id="" class="form-control">
+        <select name="sct" id="" class="form-control" style="margin-top: 1%;" >
           {% for section in ltts %}
           <option value="{{section.id}}">{{ section.Section_name}}</option>
           {%endfor%}

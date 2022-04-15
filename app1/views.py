@@ -60,13 +60,13 @@ def signup_all(request):
     if request.method=="POST":
         usr=request.POST['username']
         if User.objects.filter(username=usr).exists():
-            messages.info(request, 'Username Is Allready Exist,Please Add defrent Username, And Try Again')
+            messages.info(request, 'Username Is Already Exist,Please Add diffrent Username, And Try Again')
             return redirect('sign_all')
         elif staff.objects.filter(username=usr).exists():
-            messages.info(request, 'Username Is Allready Exist,Please Add defrent Username, And Try Again')
+            messages.info(request, 'Username Is Already Exist,Please Add difffrent Username, And Try Again')
             return redirect('sign_all')
         elif doctor.objects.filter(username=usr).exists():
-            messages.info(request, 'Username Is Allready Exist,Please Add defrent Username, And Try Again')
+            messages.info(request, 'Username Is Already Exist,Please Add difffrent Username, And Try Again')
             return redirect('sign_all')
         else:
             destination = request.POST['destini']
@@ -742,7 +742,11 @@ def send_aprove(request):
 @login_required(login_url='adminlogin')
 def admin_delete_staff(request,pk):
     products=staff.objects.get(id=pk)
-    
+    if not products.item =="static/image/icon.png":
+        os.remove(products.item.path)
+    else:
+        pass
+    products.delete()
     products.delete()
     return redirect('admin_staff_view')
 
