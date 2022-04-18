@@ -13,14 +13,14 @@
 </div>
 
 <div class="row" style="height: auto;">
-  <div class="col-sm-4" style="padding-top: 3%; text-align: center; background-color: black;">
+  <div class="col-sm-4" style="padding-top: 3%; padding-bottom: 8%; text-align: center; background-color: black;">
     
         {% if i.item == 'static/image/icon.png' %}
         <img src="{% static 'image/icon.png' %}" class="w-75 img-rounded">
 
       {% else %}
       
-        <img src="{{i.item.url}}" class="rounded-circle" style="width: 55%; margin-top: -20%;" >
+        <img src="{{i.item.url}}" class="rounded-circle" style="width: 55%;">
 
       {% endif %}
       <div style="text-align: center;"> 

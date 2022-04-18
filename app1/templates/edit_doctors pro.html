@@ -19,10 +19,11 @@
  
 
                     <input type="email"  name="mail" value="{{products.mail}}" class="form-control"><br>
+                    <input type="text"  value="{{products.section.Section_name}}" class="form-control"><br>
                     <select name="sct" style="margin-top: 1%;" style="color:black; font-weight:bold"  class="form-control">
-                        <option>{products.section.Section_name}</option>
-                        {% for section in products %}
-                        <option style="color:black; font-weight:bold" value="{{section.id}}">{{ products.section.Section_name}}</option>
+                        <option> Change Section</option>
+                        {% for section in sec %}
+                        <option style="color:black; font-weight:bold" value="{{section.id}}">{{ section.Section_name}}</option>
                         {%endfor%}
                     </select><br>
 

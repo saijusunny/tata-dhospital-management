@@ -5,7 +5,7 @@
 <div class="row" >
     <div class="col-sm-6" style="background-color: black; margin:3% auto; text-align:center">
         <form action="{% url 'add_section'%}" class="form" method="POST">
-            <h1 style="color: white;">Add Course</h1>
+            <h1 style="color: white;">Add Section</h1>
             {% csrf_token %}
             <input type="text" class="form-control" name="section" placeholder="Section Name"><br>
             <input type="number" class="form-control" name="floor" placeholder="Room Number"><br>
@@ -22,7 +22,7 @@
                 <tr>
                     <th  style="color: yellow;">ID</th>
                     <th style="color: yellow;">SECTION</th>
-                    <th style="color: yellow;">Floor NUmber</th>
+                    <th style="color: yellow;">Floor Number</th>
                     <th style="color: yellow;">Actions</th>
 
                     <!-- <th style="color: yellow;">ACTION</th> -->

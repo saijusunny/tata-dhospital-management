@@ -144,4 +144,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'saijusunny1301@gmail.com' #FROM EMAIL ID
-EMAIL_HOST_PASSWORD = 'gykvyccdsppkfsqf' #FROM eMAIL ID PASSWORD
+EMAIL_HOST_PASSWORD = 'eufrlskptaztdlxo' #FROM eMAIL ID PASSWORD

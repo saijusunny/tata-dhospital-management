@@ -38,8 +38,9 @@
                     <h5 class="card-title" style="color: white;">Section:&nbsp;{{t.section.Section_name}}</h5>
                     <h5 class="card-title" style="color: white;">Number:&nbsp;{{t.number}}</h5>
                     <h5 class="card-title" style="color: white;">Email:&nbsp;{{t.mail}}</h5>
-                    <a href="{% url 'admin_delete_doctor' t.id%}"><input type="button" value="Delete" class="btn btn-danger" onclick="alert('You Want To Delete This Account')"></a>
+                    <a href="{% url 'edit_doctor' t.id%}"><input type="button" value="Edit" class="btn btn-success"></a>
 
+                    <a href="{% url 'admin_delete_doctor' t.id%}"><input type="button" value="Delete" class="btn btn-danger" onclick="alert('You Want To Delete This Account')"></a>
                 </div>
             </div>
         </div>

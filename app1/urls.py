@@ -36,9 +36,6 @@ urlpatterns = [
     path('staff_home', views.staff_home, name="staff_home"),
     path('login_stf', views.login_stf, name="login_stf"),
     path('staff_logs', views.staff_logs, name="staff_logs"),
-    
-
-    
 #*********************************************************************************************
 
 
@@ -107,8 +104,11 @@ path('admin_delete_doctor/<int:pk>',views.admin_delete_doctor, name='admin_delet
 path('delete_admin/<int:pk>',views.delete_admin, name='delete_admin'),
 
 path('edit_doctor_details/<int:pk>',views.edit_doctor_details, name='edit_doctor_details'),
-# path('edit_doctor/<int:pk>', views.edit_doctor,name='edit_doctor'),
+path('edit_doctor/<int:pk>', views.edit_doctor,name='edit_doctor'),
 
+
+path('edit_staff_details/<int:pk>',views.edit_staff_details, name='edit_staff_details'),
+path('edit_staff/<int:pk>', views.edit_staff,name='edit_staff'),
 
 path('admin_doct_flt', views.admin_doct_flt, name='admin_doct_flt'),
 

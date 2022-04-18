@@ -17,6 +17,8 @@ from .models import userlogin
 def logs_all(request):
     return render(request, 'login._all.html')
 
+
+# login all
 def login_all(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -52,10 +54,12 @@ def login_all(request):
     else:
         return redirect('logs_all')
 
+#sign up all pages
 def sign_all(request):
     ltts=section.objects.all()
     return render(request,'signup_all.html', {'ltts':ltts})
 
+# Signup all function
 def signup_all(request):
     if request.method=="POST":
         usr=request.POST['username']
@@ -134,31 +138,7 @@ def signup_all(request):
                     messages.info(request, 'Password doesnot match!!!!!')
                     return redirect('log')
                 return redirect('doctor_login')
-            elif destination=="ADMIN":
-                fname=request.POST['name']
-                lname=request.POST['last_name']
-                username=request.POST['username']
-                password=request.POST['password']
-                cpass=request.POST['cpassword']
-                email=request.POST['email']
-
-                if password==cpass:
-                    if User.objects.filter(username=username).exists():
-                        messages.info(request, 'This Username Is Already Exists!!!!!')
-                        return redirect('signup')
-                    else:
-                        user=User.objects.create_user(
-                            first_name=fname,
-                            last_name=lname,
-                            username=username,
-                            password=password,
-                            email=email,
-                        )
-                        user.save()
-                else:
-                    messages.info(request, 'Password doesnot match!!!!!')
-                    return redirect('signup')
-                return redirect('adminlogin')
+     
 
             else:
                 return redirect ('sign_all')
@@ -258,13 +238,17 @@ def staffreg(request):
     lt=section.objects.all()
     return render(request, 'staffreg.html',{'lt':lt})
 
+
 def staff_signup(request):
     ct=section.objects.all()
     return render(request, 'staff_signup.html',{'ct':ct} )
 
+#staff Home
 def staff_home(request):
     return render(request, "staff_home.html")
 
+
+#login Staff 
 def login_stf(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -402,16 +386,7 @@ def login_doctor(request):
         return render(request, 'doctorreg.html')
    
 
-# def edit_details(request,pk):
-#     empl=images.objects.get(id=pk)
-#     form=image_form(instance=empl)
-#     if request.method =='POST':
-#         form=image_form(request.POST,instance=empl)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('view')
-#     return render(request,'edit.html',{'form':form})
-   #doctor view
+
 def pro_doctor(request):
 
     pass
@@ -466,26 +441,6 @@ def patient_flt(request):
         return render(request,'patient_view_doctor.html',{'lkt':lkt,'stc':stc, 'sect':sect})
 
 
-# add student functions
-# @login_required(login_url='adminlogin')
-# def add_student(request):
-#     if request.method== 'POST':
-#         name=request.POST['name']
-#         address=request.POST['addr']
-#         dob=request.POST['age']
-#         join=request.POST['date']
-#         sel1=request.POST['sel']
-#         course1= course.objects.get(id=sel1)
-#         std=student(
-#             std_name=name,
-#             std_address=address,
-#             std_age=dob,
-#             join_date=join,
-#             course=course1)
-#         std.save()
-#         return redirect('show')
-#     return render(request, 'student.html')
-
 
 #**************************************section*********************************************
 
@@ -520,6 +475,7 @@ def course1(request):
     uid=User.objects.get(id=request.session['uid'])
     return render(request, 'section.html', {'uid':uid})
     
+#Add Section
 
 def add_section(request):
     if request.method== 'POST':
@@ -541,12 +497,13 @@ def doctor_signup(request):
 
 
 #----admin view-------------------------------------
+#admin Doctor profile view
 @login_required(login_url='adminlogin')
 def admin_doct_view(request):
     stc=section.objects.all()
     dt=doctor.objects.all()
     return render(request, 'admin_doct_views.html', {'dt':dt, 'stc':stc})
-
+#admin doctor View filter
 @login_required(login_url='adminlogin')
 def admin_doct_flt(request):
     sect=request.POST['sct']
@@ -557,6 +514,8 @@ def admin_doct_flt(request):
         stc=section.objects.all()
         dt=doctor.objects.filter(section=sect)
         return render(request,'admin_doct_views.html',{'dt':dt,'stc':stc})
+
+#admin  staff filter view
 
 @login_required(login_url='adminlogin')
 
@@ -570,18 +529,21 @@ def admin_staff_flt(request):
         dt=staff.objects.filter(section=sect)
         return render(request,'admin_stf_view.html',{'dt':dt,'stc':stc})
 
+#admin staff view
 @login_required(login_url='adminlogin')
 def admin_staff_view(request):
     stc=section.objects.all()
     dt=staff.objects.all()
     return render(request, 'admin_stf_view.html', {'dt':dt, 'stc':stc})
 
+#admin patient view
 @login_required(login_url='adminlogin')
 def admin_patient_view(request):
     lkt=patient.objects.all()
     stc=section.objects.all()
     return render(request,'admin_patient details.html',{'stc':stc, 'lkt':lkt})
 
+#admin patient filter
 @login_required(login_url='adminlogin')
 def admin_patient_flt(request):
     sect=request.POST['sct']
@@ -625,22 +587,25 @@ def signup_details(request):
         result.save()
         return redirect('profile_admin')
 
-
+# admin complete profile 
 @login_required(login_url='adminlogin')
 def complete_pro(request):
     return render(request,'admin_signup_pro.html')
 
+#admin Profile View
 @login_required(login_url='adminlogin')
 def profile_admin(request):
     result=userlogin.objects.filter(user=request.user.id).last()
     return render(request,'profile_admin.html', {'result':result})
 
+#admin edit profile page
 @login_required(login_url='adminlogin')
 def edit_admin_pro(request,pk):
     products=userlogin.objects.get(id=pk)
     return render(request,'admin_edit.html', {'products':products})
 
-@login_required(login_url='adminlogin')
+
+#admin edit function
 @login_required(login_url='adminlogin')
 def edit_details(request,pk):
     if request.method=='POST':
@@ -667,10 +632,15 @@ def edit_details(request,pk):
         return redirect('profile_admin')
     return render(request, 'admin_edit.html')
 
+
+#admin patient approve page
+
 @login_required(login_url='adminlogin')
 def admin_aprove(request,pk):
     ltt=patient.objects.get(id=pk)
     return render(request, 'admin_patient_aprovel.html',{'ltt':ltt})
+
+    #admin send aprove through email
 @login_required(login_url='adminlogin')     
 def admin_send_aprove(request):
      if request.method=='POST':
@@ -698,6 +668,7 @@ def admin_send_aprove(request):
             return redirect('admin_patient_view')
      return render(request, 'admin_patient_aprovel.html')
 
+#admin delete patient
 def admin_delete_patient(request,pk):
     products=patient.objects.get(id=pk)
     products.delete()
@@ -708,11 +679,14 @@ from django.conf import settings
 
 from django.core.mail import send_mail
 
+#doctor patient aprove page
 
 def aprove(request,pk):
     ltt=patient.objects.get(id=pk)
     return render(request, 'patient_aprovel.html',{'ltt':ltt})
       
+
+#doctor patient aprove
 def send_aprove(request):
      if request.method=='POST':
             name=request.POST['name']
@@ -739,6 +713,7 @@ def send_aprove(request):
             return redirect('patient_view_doctor')
      return render(request, 'patient_aprovel.html')
 
+#admin delete staff
 @login_required(login_url='adminlogin')
 def admin_delete_staff(request,pk):
     products=staff.objects.get(id=pk)
@@ -750,6 +725,8 @@ def admin_delete_staff(request,pk):
     products.delete()
     return redirect('admin_staff_view')
 
+
+#admin delete doctor
 @login_required(login_url='adminlogin')
 def admin_delete_doctor(request,pk):
     products=doctor.objects.get(id=pk)
@@ -760,12 +737,14 @@ def admin_delete_doctor(request,pk):
     products.delete()
     return redirect('admin_doct_view')
 
+#delete patient
 @login_required(login_url='adminlogin')
 def delete_patient(request,pk):
     products=patient.objects.get(id=pk)
     products.delete()
     return redirect('patient_view_doctor')
 
+#delete admin profile
 @login_required(login_url='adminlogin')
 def delete_admin(request,pk):
     products=userlogin.objects.get(id=pk)
@@ -777,10 +756,11 @@ def delete_admin(request,pk):
     return redirect('adminlogin')
 
 #Edit doctors:
-@login_required(login_url='adminlogin')
+
 def edit_doctor(request,pk):
     products=doctor.objects.get(id=pk)
-    return render(request,'edit_doctors pro.html', {'products':products})
+    sec=section.objects.all()
+    return render(request,'edit_doctors pro.html', {'products':products, 'sec':sec})
 
 @login_required(login_url='adminlogin')
 def edit_doctor_details(request,pk):
@@ -791,7 +771,33 @@ def edit_doctor_details(request,pk):
         products.password=request.POST.get('password')
         products.number=request.POST.get('number')
         products.mail=request.POST.get('mail')
-        products.section=request.POST.get('sct')
+      
+        sec=request.POST['sct']
+        course1= section.objects.get(id=sec)
+        products.section=course1
         products.save()
         return redirect('admin_doct_view')
-    return render(request, 'admin_edit.html')
+    return render(request, 'admin_doct_views.html')
+
+#edit staff
+def edit_staff(request,pk):
+    products=staff.objects.get(id=pk)
+    sec=section.objects.all()
+    return render(request,'edit_taff_pro.html', {'products':products, 'sec':sec})
+
+@login_required(login_url='adminlogin')
+def edit_staff_details(request,pk):
+    if request.method=='POST':
+        products = staff.objects.get(id=pk)
+        products.name=request.POST.get('name')
+        products.username=request.POST.get('username')
+        products.password=request.POST.get('password')
+        products.number=request.POST.get('number')
+        products.mail=request.POST.get('mail')
+      
+        sec=request.POST['sct']
+        course1= section.objects.get(id=sec)
+        products.section=course1
+        products.save()
+        return redirect('admin_staff_view')
+    return render(request, 'admin_stf_view.html')

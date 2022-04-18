@@ -40,8 +40,9 @@
                     <h5 class="card-title"style="color: white;">Section:&nbsp;{{t.section.Section_name}}</h5>
                     <h5 class="card-title"style="color: white;">Mobile No:&nbsp;{{t.number}}</h5>
                     <h5 class="card-title"style="color: white;">Email:&nbsp;{{t.mail}}</h5>
-                    <a href="{% url 'admin_delete_staff' t.id%}"> <input type='submit' class="btn btn-danger"value="Delete" onclick="alert('Delete Staff')" name="" id=""></a>
+                    <a href="{% url 'edit_staff' t.id%}"><input type="button" value="Edit" class="btn btn-success"></a>
 
+                    <a href="{% url 'admin_delete_staff' t.id%}"> <input type='submit' class="btn btn-danger"value="Delete" onclick="alert('Delete Staff')" name="" id=""></a>
                 </div>
             </div>
         </div>
