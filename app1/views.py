@@ -423,6 +423,16 @@ def patient_reg(request):
 
 #patient View in doctor section
 
+# doctor section view
+
+def dct_pt_view(request,pk):
+    products=doctor.objects.get(id=pk)
+    pkg=products.section.id
+    lkt=patient.objects.filter(section=pkg)
+    stc=section.objects.all()
+    return render(request,'patient_view_doctor.html',{'stc':stc, 'lkt':lkt})
+
+
 def patient_view_doctor(request):
     print ("hai")
     lkt=patient.objects.all()

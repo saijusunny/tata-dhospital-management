@@ -50,6 +50,10 @@ urlpatterns = [
     path('pro_doctor',views.pro_doctor,name='pro_doctor'),
     path('doctor_logs', views.doctor_logs, name="doctor_logs"),
     path('patient_flt', views.patient_flt, name='patient_flt'),
+        
+        
+        
+    path('dct_pt_view/<int:pk>', views.dct_pt_view, name='dct_pt_view'),
     
 #**********************************************************************************************************
     

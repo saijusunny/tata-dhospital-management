@@ -34,7 +34,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link {% if request.resolver_match.url_name == 'doctor_logs'%} active {% endif %}" href="{% url 'doctor_logs' %}">PROFILE</a>
+                <a class="nav-link {% if request.resolver_match.url_name == 'doctor_logs'%} active {% endif %}" href="{% url 'logs_all' %}">PROFILE</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link {% if request.resolver_match.url_name == 'index'%} active {% endif %}" href="{% url 'index'%}">LOG OUT</a>  
