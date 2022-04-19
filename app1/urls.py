@@ -4,12 +4,11 @@ from django.urls import path
 from.import views
 
 urlpatterns = [
+    
     path('admin/', admin.site.urls),
-   path('login_all', views.login_all, name='login_all'),
-
+    path('login_all', views.login_all, name='login_all'),
     path('logs_all', views.logs_all, name='logs_all'),
-      path('sign_all', views.sign_all, name='sign_all'),
-
+    path('sign_all', views.sign_all, name='sign_all'),
     path('signup_all', views.signup_all, name='signup_all'),
 
 
@@ -50,9 +49,6 @@ urlpatterns = [
     path('pro_doctor',views.pro_doctor,name='pro_doctor'),
     path('doctor_logs', views.doctor_logs, name="doctor_logs"),
     path('patient_flt', views.patient_flt, name='patient_flt'),
-        
-        
-        
     path('dct_pt_view/<int:pk>', views.dct_pt_view, name='dct_pt_view'),
     
 #**********************************************************************************************************
@@ -106,16 +102,11 @@ path('admin_delete_patient/<int:pk>',views.admin_delete_patient, name='admin_del
 path('admin_delete_staff/<int:pk>',views.admin_delete_staff, name='admin_delete_staff'),
 path('admin_delete_doctor/<int:pk>',views.admin_delete_doctor, name='admin_delete_doctor'),
 path('delete_admin/<int:pk>',views.delete_admin, name='delete_admin'),
-
 path('edit_doctor_details/<int:pk>',views.edit_doctor_details, name='edit_doctor_details'),
 path('edit_doctor/<int:pk>', views.edit_doctor,name='edit_doctor'),
-
-
 path('edit_staff_details/<int:pk>',views.edit_staff_details, name='edit_staff_details'),
 path('edit_staff/<int:pk>', views.edit_staff,name='edit_staff'),
-
 path('admin_doct_flt', views.admin_doct_flt, name='admin_doct_flt'),
-
 path('admin_staff_flt', views.admin_staff_flt, name='admin_staff_flt'),
 
 

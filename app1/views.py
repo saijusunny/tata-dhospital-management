@@ -218,7 +218,7 @@ def adminlogin(request):
 
 
 # logoutpage
-@login_required(login_url='adminlogin') #login  session method
+@login_required(login_url='logs_all') #login  session method
 def adminlogout(request):
     auth.logout(request)
     return redirect('index')
@@ -322,10 +322,6 @@ def log(request):
     ct=section.objects.all()
     return render(request, 'doctorreg.html',{'ct':ct} )
 
-
-
-# def doctor_signup(request):
-#     return render(request, "doctor_signup.html")
 
 def doctor_home(request):
     return render(request, "doctor_home.html")
@@ -508,13 +504,13 @@ def doctor_signup(request):
 
 #----admin view-------------------------------------
 #admin Doctor profile view
-@login_required(login_url='adminlogin')
+@login_required(login_url='logs_all')
 def admin_doct_view(request):
     stc=section.objects.all()
     dt=doctor.objects.all()
     return render(request, 'admin_doct_views.html', {'dt':dt, 'stc':stc})
 #admin doctor View filter
-@login_required(login_url='adminlogin')
+@login_required(login_url='logs_all')
 def admin_doct_flt(request):
     sect=request.POST['sct']
     if sect=='All Sections':
@@ -527,7 +523,7 @@ def admin_doct_flt(request):
 
 #admin  staff filter view
 
-@login_required(login_url='adminlogin')
+@login_required(login_url='logs_all')
 
 def admin_staff_flt(request):
     sect=request.POST['sct']
@@ -540,21 +536,21 @@ def admin_staff_flt(request):
         return render(request,'admin_stf_view.html',{'dt':dt,'stc':stc})
 
 #admin staff view
-@login_required(login_url='adminlogin')
+@login_required(login_url='logs_all')
 def admin_staff_view(request):
     stc=section.objects.all()
     dt=staff.objects.all()
     return render(request, 'admin_stf_view.html', {'dt':dt, 'stc':stc})
 
 #admin patient view
-@login_required(login_url='adminlogin')
+@login_required(login_url='logs_all')
 def admin_patient_view(request):
     lkt=patient.objects.all()
     stc=section.objects.all()
     return render(request,'admin_patient details.html',{'stc':stc, 'lkt':lkt})
 
 #admin patient filter
-@login_required(login_url='adminlogin')
+@login_required(login_url='logs_all')
 def admin_patient_flt(request):
     sect=request.POST['sct']
     if sect=='All Sections':
@@ -569,7 +565,7 @@ def admin_patient_flt(request):
 
 #admin signup
 #compltet profile section
-@login_required(login_url='adminlogin')
+@login_required(login_url='logs_all')
 def signup_details(request):
     if request.method == "POST":
         nm=request.POST['name']
@@ -598,25 +594,25 @@ def signup_details(request):
         return redirect('profile_admin')
 
 # admin complete profile 
-@login_required(login_url='adminlogin')
+@login_required(login_url='logs_all')
 def complete_pro(request):
     return render(request,'admin_signup_pro.html')
 
 #admin Profile View
-@login_required(login_url='adminlogin')
+@login_required(login_url='logs_all')
 def profile_admin(request):
     result=userlogin.objects.filter(user=request.user.id).last()
     return render(request,'profile_admin.html', {'result':result})
 
 #admin edit profile page
-@login_required(login_url='adminlogin')
+@login_required(login_url='logs_all')
 def edit_admin_pro(request,pk):
     products=userlogin.objects.get(id=pk)
     return render(request,'admin_edit.html', {'products':products})
 
 
 #admin edit function
-@login_required(login_url='adminlogin')
+@login_required(login_url='logs_all')
 def edit_details(request,pk):
     if request.method=='POST':
         products = userlogin.objects.get(id=pk)
@@ -645,13 +641,13 @@ def edit_details(request,pk):
 
 #admin patient approve page
 
-@login_required(login_url='adminlogin')
+@login_required(login_url='logs_all')
 def admin_aprove(request,pk):
     ltt=patient.objects.get(id=pk)
     return render(request, 'admin_patient_aprovel.html',{'ltt':ltt})
 
     #admin send aprove through email
-@login_required(login_url='adminlogin')     
+@login_required(login_url='logs_all')     
 def admin_send_aprove(request):
      if request.method=='POST':
             name=request.POST['name']
@@ -724,7 +720,7 @@ def send_aprove(request):
      return render(request, 'patient_aprovel.html')
 
 #admin delete staff
-@login_required(login_url='adminlogin')
+@login_required(login_url='logs_all')
 def admin_delete_staff(request,pk):
     products=staff.objects.get(id=pk)
     if not products.item =="static/image/icon.png":
@@ -737,7 +733,7 @@ def admin_delete_staff(request,pk):
 
 
 #admin delete doctor
-@login_required(login_url='adminlogin')
+@login_required(login_url='logs_all')
 def admin_delete_doctor(request,pk):
     products=doctor.objects.get(id=pk)
     if not products.items =="static/image/icon.png":
@@ -748,14 +744,14 @@ def admin_delete_doctor(request,pk):
     return redirect('admin_doct_view')
 
 #delete patient
-@login_required(login_url='adminlogin')
+
 def delete_patient(request,pk):
     products=patient.objects.get(id=pk)
     products.delete()
     return redirect('patient_view_doctor')
 
 #delete admin profile
-@login_required(login_url='adminlogin')
+@login_required(login_url='logs_all')
 def delete_admin(request,pk):
     products=userlogin.objects.get(id=pk)
     if not products.image =="static/image/icon.png":
@@ -763,7 +759,7 @@ def delete_admin(request,pk):
     else:
         pass
     products.delete()
-    return redirect('adminlogin')
+    return redirect('logs_all')
 
 #Edit doctors:
 
@@ -772,7 +768,7 @@ def edit_doctor(request,pk):
     sec=section.objects.all()
     return render(request,'edit_doctors pro.html', {'products':products, 'sec':sec})
 
-@login_required(login_url='adminlogin')
+@login_required(login_url='logs_all')
 def edit_doctor_details(request,pk):
     if request.method=='POST':
         products = doctor.objects.get(id=pk)
@@ -795,7 +791,7 @@ def edit_staff(request,pk):
     sec=section.objects.all()
     return render(request,'edit_taff_pro.html', {'products':products, 'sec':sec})
 
-@login_required(login_url='adminlogin')
+@login_required(login_url='logs_all')
 def edit_staff_details(request,pk):
     if request.method=='POST':
         products = staff.objects.get(id=pk)

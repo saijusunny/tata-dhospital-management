@@ -1,0 +1,16 @@
+
+
+--------------Admin Login---------------------------
+
+username: saiju
+password: 1234
+
+--------------Doctor Login---------------------------
+
+username: sunny
+password: 1234
+
+--------------staff Login---------------------------
+
+username: adam
+password: 1234
